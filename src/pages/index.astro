@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { SERIES, GITHUB_URL, formatDate } from '../consts';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const recentPosts = posts.slice(0, 8);
+---
+
+<BaseLayout>
+  <section class="intro">
+    <h1>sherotree</h1>
+    <p>把复杂技术讲清楚。这里是我的技术文章归档。</p>
+  </section>
+
+  <h2 class="section-title">最近文章</h2>
+  {
+    recentPosts.length > 0 ? (
+      <ul class="post-list">
+        {recentPosts.map((post) => (
+          <li>
+            <time datetime={post.data.date.toISOString().slice(0, 10)}>
+              {formatDate(post.data.date)}
+            </time>
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="muted">还没有文章。</p>
+    )
+  }
+
+  <h2 class="section-title">入口</h2>
+  <ul class="entry-links">
+    <li>
+      <a href="/blog/">网络日志</a>
+      <span class="desc">全部文章，按日期排列</span>
+    </li>
+    {
+      Object.entries(SERIES).map(([slug, meta]) => (
+        <li>
+          <a href={`/series/${slug}/`}>专栏：{meta.title}</a>
+          <span class="desc">{meta.description}</span>
+        </li>
+      ))
+    }
+    <li>
+      <a href="/about/">关于</a>
+      <span class="desc">我是谁，以及如何联系</span>
+    </li>
+    <li>
+      <a href={GITHUB_URL}>GitHub</a>
+      <span class="desc">本站开源，欢迎围观</span>
+    </li>
+  </ul>
+</BaseLayout>

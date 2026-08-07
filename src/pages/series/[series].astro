@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { SERIES, formatDate } from '../../consts';
+
+export async function getStaticPaths() {
+  return Object.entries(SERIES).map(([series, meta]) => ({
+    params: { series },
+    props: { meta },
+  }));
+}
+
+const { series } = Astro.params;
+const { meta } = Astro.props;
+
+const posts = (
+  await getCollection('blog', ({ data }) => !data.draft && data.series === series)
+).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+---
+
+<BaseLayout title={`专栏：${meta.title}`} description={meta.description}>
+  <h1>专栏：{meta.title}</h1>
+  <p class="muted">{meta.description}</p>
+  {
+    posts.length > 0 ? (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <time datetime={post.data.date.toISOString().slice(0, 10)}>
+              {formatDate(post.data.date)}
+            </time>
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="muted">本专栏还在筹备中，文章会陆续更新。</p>
+    )
+  }
+</BaseLayout>

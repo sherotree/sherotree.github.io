@@ -35,15 +35,20 @@ draft: false        # true 时不会构建
 
 ```
 src/
-  content/blog/       # 文章（Markdown 母稿）
+  content/blog/       # 文章母稿（权威归档）
   content.config.ts   # 内容集合与 frontmatter 校验
   layouts/            # 页面布局（含 BlogPosting JSON-LD）
   pages/              # 路由：/、/blog/、/series/、/about/
-  styles/global.css   # 全局极简样式
-  consts.ts           # 站点常量（标题、描述、专栏定义）
+  styles/global.css
+  consts.ts
+docs/plans/           # 选题、建站档案、周刊副线
+.agents/skills/       # 写作 skill（ruanyifeng-tech-writing）
 public/robots.txt
-.github/workflows/deploy.yml   # push main 即部署
+.github/workflows/deploy.yml
+AGENTS.md
 ```
+
+选题与分发纪律见 [docs/README.md](./docs/README.md)。新增文章只往 `src/content/blog/` 写，不要写回其他仓库。
 
 ## 部署
 

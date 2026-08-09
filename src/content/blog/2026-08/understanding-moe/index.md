@@ -1,6 +1,6 @@
 ---
 title: 理解 MoE：总参数很大，为何还能跑
-date: 2026-08-14
+date: 2026-08-07
 description: 用白话说明 Mixture of Experts：总参数可以很大，但每次推理只激活少数专家，所以算力与显存压力不等于「全员同时上场」。
 tags: [AI, 基础概念, MoE, 稀疏计算]
 draft: false

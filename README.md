@@ -50,6 +50,19 @@ AGENTS.md
 
 选题与分发纪律见 [docs/README.md](./docs/README.md)。新增文章只往 `src/content/blog/` 写，不要写回其他仓库。
 
+## 导出 CSDN 分发稿
+
+把母稿里的 `./images/` 相对路径换成 jsDelivr 绝对链接，去掉 frontmatter，并复制到剪贴板：
+
+```bash
+npm run export:csdn -- src/content/blog/2026-08/understanding-moe
+# 或按 slug：
+npm run export:csdn -- understanding-moe
+```
+
+产物在 `dist-publish/csdn/{slug}.md`。可选参数：`--no-clipboard`、`--ref <git-ref>`（默认 `main`）。  
+注意：图片需已 push 到对应远程分支，jsDelivr 才能访问。
+
 ## 部署
 
 仓库 Settings → Pages → Source 选择 **GitHub Actions**，之后每次 push `main` 自动上线。

@@ -31,6 +31,9 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          # 首次部署时若尚未开启 Pages，自动启用并切到 GitHub Actions
+          enablement: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

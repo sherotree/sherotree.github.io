@@ -6,8 +6,12 @@ const blog = defineCollection({
   loader: glob({
     base: './src/content/blog',
     pattern: '**/*.md',
-    // `foo.md` 与 `foo/index.md` 均生成 id `foo`，对应路由 /blog/foo/
-    generateId: ({ entry }) => entry.replace(/(\/index)?\.md$/, ''),
+    // 目录可为 `slug/` 或 `YYYY-MM/slug/`；id 始终取末段 slug，路由 /blog/{slug}/
+    generateId: ({ entry }) => {
+      const withoutExt = entry.replace(/(\/index)?\.md$/, '');
+      const segments = withoutExt.split('/');
+      return segments[segments.length - 1] ?? withoutExt;
+    },
   }),
   schema: z.object({
     title: z.string(),

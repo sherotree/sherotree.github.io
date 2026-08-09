@@ -13,7 +13,7 @@ npm run preview   # 预览构建产物
 
 ## 如何新增一篇文章
 
-1. 在 `src/content/blog/` 下新建 `文章-slug.md`，或带图时新建目录 `文章-slug/index.md`（配图放同目录 `images/` 中，正文用相对路径引用）。
+1. 在 `src/content/blog/{YYYY-MM}/` 下新建 `文章-slug/index.md`（`YYYY-MM` 与 frontmatter `date` 年月一致；配图放同目录 `images/`，正文用相对路径引用）。
 2. 填写 frontmatter：
 
 ```yaml
@@ -24,18 +24,18 @@ updated:            # 可选，修订日期
 description: 一句话摘要，用于列表与 SEO
 tags: [AI, 基础概念]
 series:             # 可选：browser-graphics | agent-notes
-draft: false        # true 时不会构建
+draft: true         # 囤稿默认 true；发布周改为 false
 ---
 ```
 
 3. 正文从 `##` 二级标题开始写（一级标题由页面模板根据 `title` 渲染）。
-4. push 到 `main`，GitHub Actions 自动构建并发布。
+4. 发布：当周稿改 `draft: false` 后 push `main`，GitHub Actions 自动构建；站点 URL 为 `/blog/{slug}/`（不含月份路径）。
 
 ## 目录结构
 
 ```
 src/
-  content/blog/       # 文章母稿（权威归档）
+  content/blog/       # 文章母稿（按 YYYY-MM/slug/ 归档）
   content.config.ts   # 内容集合与 frontmatter 校验
   layouts/            # 页面布局（含 BlogPosting JSON-LD）
   pages/              # 路由：/、/blog/、/series/、/about/

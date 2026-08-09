@@ -52,16 +52,21 @@ AGENTS.md
 
 ## 导出 CSDN 分发稿
 
-把母稿里的 `./images/` 相对路径换成 jsDelivr 绝对链接，去掉 frontmatter，并复制到剪贴板：
+把母稿里的 `./images/` 相对路径换成 jsDelivr 绝对链接，去掉 frontmatter，写入 `# 标题`；单篇时默认复制到剪贴板：
 
 ```bash
-npm run export:csdn -- src/content/blog/2026-08/understanding-moe
-# 或按 slug：
+# 单篇
 npm run export:csdn -- understanding-moe
+npm run export:csdn -- src/content/blog/2026-08/understanding-moe
+
+# 整月 / 全部
+npm run export:csdn -- 2026-08
+npm run export:csdn -- src/content/blog/2026-08
+npm run export:csdn -- src/content/blog
 ```
 
 产物在 `dist-publish/csdn/{slug}.md`。可选参数：`--no-clipboard`、`--ref <git-ref>`（默认 `main`）。  
-注意：图片需已 push 到对应远程分支，jsDelivr 才能访问。
+批量导出不会写剪贴板。图片需已 push 到对应远程分支，jsDelivr 才能访问。
 
 ## 部署
 

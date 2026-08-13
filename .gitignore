@@ -4,3 +4,4 @@ dist-publish/
 .astro/
 .DS_Store
 npm-debug.log*
+.playwright-cli

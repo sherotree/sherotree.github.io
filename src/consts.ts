@@ -4,6 +4,8 @@ export const SITE_DESCRIPTION = '把复杂技术讲清楚';
 export const AUTHOR = 'sherotree';
 export const GITHUB_URL = 'https://github.com/sherotree';
 export const REPO_URL = 'https://github.com/sherotree/sherotree.github.io';
+/** 与产品站共用的 GA4 Measurement ID */
+export const GA_MEASUREMENT_ID = 'G-DTQJMNLS97';
 
 export const SERIES: Record<string, { title: string; description: string }> = {
   'browser-graphics': {

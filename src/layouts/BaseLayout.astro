@@ -1,6 +1,12 @@
 ---
 import '../styles/global.css';
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, GITHUB_URL } from '../consts';
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  GITHUB_URL,
+  GA_MEASUREMENT_ID,
+} from '../consts';
 
 interface Props {
   title?: string;
@@ -10,6 +16,7 @@ interface Props {
 const { title, description = SITE_DESCRIPTION } = Astro.props;
 const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const enableGa = Boolean(GA_MEASUREMENT_ID) && import.meta.env.PROD;
 
 const websiteJsonLd = {
   '@context': 'https://schema.org',
@@ -34,6 +41,24 @@ const websiteJsonLd = {
     <link rel="canonical" href={canonical} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
+    {
+      enableGa && (
+        <>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          ></script>
+          <script is:inline define:vars={{ GA_MEASUREMENT_ID }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', GA_MEASUREMENT_ID);
+          </script>
+        </>
+      )
+    }
     <slot name="head" />
   </head>
   <body>

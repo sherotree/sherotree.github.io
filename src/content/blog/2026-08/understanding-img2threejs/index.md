@@ -1,10 +1,10 @@
 ---
 title: 理解 img2threejs：一张图如何变成 Three.js 模型
-date: 2026-08-20
+date: 2026-08-13
 description: 说明开源技能 img2threejs 如何把参考图重建成可 diff、可动画的程序化 Three.js 工厂函数，以及它与 mesh 导出路线的差别。
 tags: [Three.js, 图像到3D, Agent, 程序化建模]
 series: browser-graphics
-draft: true
+draft: false
 ---
 
 img2threejs 是一套给 Agent 用的开源技能（Skill）：你给它一张物体参考图，它尽量用 **TypeScript + Three.js 原语 / 程序材质** 写出一个 `THREE.Group` 工厂函数，而不是导出一大坨 mesh 文件。
@@ -120,7 +120,7 @@ python3 forge/stage3_build/generate_threejs_factory.py spec.json --out src/creat
 展览馆里的 Sony 耳机示例，工厂开头大致是这样组织的（节选）：
 
 ```ts
-import * as THREE from 'three';
+import * as THREE from "three";
 
 export interface SonyWf1000xm3Options {
   shadows?: boolean;

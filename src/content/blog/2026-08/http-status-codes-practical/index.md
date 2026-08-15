@@ -1,9 +1,9 @@
 ---
 title: HTTP 状态码：只记你真正用得到的那些
-date: 2026-08-21
+date: 2026-08-11
 description: 不背完整状态码表，只记住前后端日常会碰到的 2xx / 3xx / 4xx / 5xx 常用项，以及各自该谁处理。
 tags: [HTTP, 基础概念, 状态码, 后端, 前端]
-draft: true
+draft: false
 ---
 
 HTTP 状态码（status code）是服务器对一次请求给出的三位数结果标签：成功、换地方、客户端有问题，还是服务端有问题。

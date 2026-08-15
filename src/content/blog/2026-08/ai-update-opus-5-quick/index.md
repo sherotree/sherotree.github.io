@@ -1,9 +1,9 @@
 ---
 title: 当周快评：Claude Opus 5 来了，开发者先看这三件事
-date: 2026-08-26
+date: 2026-08-16
 description: 围绕 2026 年 7 月发布的 Claude Opus 5 做开发者向快评：是什么、怎么调用、什么时候值得换，并对照同周前后几条模型动态。
 tags: [AI, 热点, Claude, Opus 5]
-draft: true
+draft: false
 ---
 
 Anthropic 在 2026 年 7 月 24 日发布了 Claude Opus 5。官方把它定位成更适合日常使用的旗舰档：编码与知识工作评测上更强，价格与上一代 Opus 4.8 同档。

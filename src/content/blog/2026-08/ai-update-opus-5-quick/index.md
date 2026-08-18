@@ -10,7 +10,7 @@ Anthropic 在 2026 年 7 月 24 日发布了 Claude Opus 5。官方把它定位�
 
 热点文容易写成发布会摘要。我对这类更新只关心三件事：**是什么变了、怎么调用、值不值得换**。下面按这个结构写，并顺带对照同阶段另外几条模型动态。
 
-![评估新模型的三个问题](./images/ai-update-three-questions.png)
+![评估新模型的三个问题](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/ai-update-three-questions_hsSnQreGS.png)
 
 ## 一、这一周前后在吵什么
 
@@ -20,7 +20,7 @@ Anthropic 在 2026 年 7 月 24 日发布了 Claude Opus 5。官方把它定位�
 （2）Google 放出偏效率向的 Gemini 3.6 Flash  
 （3）Anthropic 发布 Opus 5，并强调 effort（思考强度）与默认思考行为
 
-![2026 年 7 月前后几条模型动态](./images/ai-update-july-2026.png)
+![2026 年 7 月前后几条模型动态](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/ai-update-july-2026_26Rup-G_9.png)
 
 本文主线仍是 Opus 5。其余只作对照，避免一篇稿里五场发布会一起讲。
 

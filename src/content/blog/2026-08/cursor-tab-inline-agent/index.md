@@ -12,7 +12,7 @@ Cursor 是一款把代码补全、局部改写和代理式改仓库能力放在�
 
 下面按「介入程度」说明三者分别干什么，以及怎么选。快捷键以常见默认值为例，你本机若改过键位，以设置里的为准。
 
-![Tab、行内编辑与 Agent 三层介入](./images/cursor-three-modes.png)
+![Tab、行内编辑与 Agent 三层介入](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/cursor-three-modes_dq9tEtZoe.png)
 
 ## 一、先建立一个选择标准
 
@@ -30,7 +30,7 @@ Tab 补全（以及同源的「下一处编辑」建议）适合你已经在写�
 
 典型画面是：你打了半行，编辑器里出现灰色预览；按 Tab 接受，继续往下写。它像副驾驶帮你踩油门，方向盘仍在你手上。
 
-![灰色预览表示 Tab 待确认的补全](./images/cursor-tab-ghost.png)
+![灰色预览表示 Tab 待确认的补全](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/cursor-tab-ghost_ejYemaq0c.png)
 
 适合：
 
@@ -139,7 +139,7 @@ Agent（以及同类的多文件代理对话）适合目标明确、但步骤跨
 
 把前面收成一张图：
 
-![按改动范围选择 Tab、行内编辑或 Agent](./images/cursor-when-to-choose.png)
+![按改动范围选择 Tab、行内编辑或 Agent](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/cursor-when-to-choose_B_vrb5jw9.png)
 
 日常可以记三条口诀：
 

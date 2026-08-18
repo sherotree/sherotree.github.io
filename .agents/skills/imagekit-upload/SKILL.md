@@ -1,6 +1,6 @@
 ---
 name: imagekit-upload
-description: Upload images (and other media) to ImageKit.io Media Library via server-side Upload File V2 API (POST /api/v2/files/upload), return CDN URLs, and optionally apply URL-based transforms. Use when the user asks to upload to ImageKit, ImageKit CDN, ik.imagekit.io, or host/optimize images with ImageKit.
+description: Upload images (and other media) to ImageKit.io Media Library via server-side Upload File V2 API (POST /api/v2/files/upload), return CDN URLs, and optionally compress/resize via ImageKit pre-transformation on upload. Use when the user asks to upload to ImageKit, ImageKit CDN, ik.imagekit.io, or host/optimize images with ImageKit.
 ---
 
 # ImageKit Upload
@@ -52,7 +52,13 @@ python3 scripts/upload.py ./photo.jpg -f /blog/covers --tags hero,cover
 python3 scripts/upload.py ./photo.jpg --env-dir apps/3005-ox
 python3 scripts/upload.py https://example.com/image.png --file-name cover.png
 python3 scripts/upload.py ./logo.svg --format url
+python3 scripts/upload.py ./hero.png --compress
+python3 scripts/upload.py ./hero.png /blog/2026/08 --compress --quality 80
+python3 scripts/upload.py ./hero.png --compress --image-format webp --max-width 1600
+python3 scripts/upload.py ./hero.png --pre "w-1200,q-75,f-jpg"
 ```
+
+Blog / large raster images：默认加 `--compress`（走 ImageKit **pre-transformation**，默认 `w-1600,h-1600,c-at_max,q-82`）。
 
 Or raw curl:
 
@@ -61,7 +67,8 @@ curl -sS -X POST "https://upload.imagekit.io/api/v2/files/upload" \
   -u "$IMAGEKIT_PRIVATE_KEY:" \
   -F "file=@./photo.jpg" \
   -F "fileName=photo.jpg" \
-  -F "folder=/uploads"
+  -F "folder=/uploads" \
+  -F 'transformation={"pre":"w-1600,h-1600,c-at_max,q-82"}'
 ```
 
 ## Agent workflow
@@ -70,8 +77,9 @@ curl -sS -X POST "https://upload.imagekit.io/api/v2/files/upload" \
 2. Prefer `scripts/upload.py` over ad-hoc code.
 3. Pass a local path or `https://` URL as `source`.
 4. If the user names a folder (e.g. `/blog`, `assets/hero`), pass it as positional folder or `-f/--folder`. Paths are normalized to start with `/`.
-5. Return at least: `url`, `fileId`, `name`, `filePath` from the JSON response.
-6. Do **not** print or commit the private key.
+5. For blog covers / large raster images, pass `--compress` unless the user asks for lossless/original. Do **not** compress locally with Pillow/sips — use the Upload API `transformation.pre`.
+6. Return at least: `url`, `fileId`, `name`, `filePath`, and if present `size` / `transformation.pre`.
+7. Do **not** print or commit the private key.
 
 ## Script options
 
@@ -85,8 +93,36 @@ curl -sS -X POST "https://upload.imagekit.io/api/v2/files/upload" \
 | `--no-unique` | Do not append unique suffix |
 | `--overwrite` | Overwrite same name in folder |
 | `--private` | Mark file private |
+| `--compress` | Send ImageKit `transformation.pre` (server-side resize + quality) |
+| `--quality N` | Maps to `q-N` (default `82` with `--compress`) |
+| `--max-width PX` | Maps to `w-*` (default `1600` with `--compress`) |
+| `--max-height PX` | Maps to `h-*` (optional; with width uses `c-at_max`) |
+| `--image-format` | `keep` (default) / `auto` / `jpeg` / `webp` / `png` → ImageKit `f-*` |
+| `--pre TRANSFORM` | Raw pre string; overrides the flags above |
 | `--format url` | Print only the CDN `url` |
 | `--env-dir DIR` | Also load `.env` / `.env.local` from `DIR` (repeatable) |
+
+### Compression (ImageKit pre-transformation)
+
+Uses Upload API field `transformation: { "pre": "..." }` — applied **before** the file is stored in the Media Library ([docs](https://imagekit.io/docs/dam/pre-and-post-transformation-on-upload)).
+
+Default `--compress` builds:
+
+```text
+w-1600,h-1600,c-at_max,q-82
+```
+
+- `c-at_max`：保持比例，装进盒子，**不放大**原图
+- `q-82`：有损质量（与 ImageKit 默认优化同一套语法）
+- 可选 `--image-format jpeg` → 追加 `f-jpg`（同理 `f-webp` / `f-png` / `f-auto`）
+
+Response echo:
+
+```json
+"transformation": { "pre": "w-1600,h-1600,c-at_max,q-82" }
+```
+
+Compare `size` in the upload response to the local file to see savings. Pre-transform for images is synchronous.
 
 ## Response fields (common)
 
@@ -153,6 +189,9 @@ const result = await client.beta.v2.files.upload({
   file: fs.createReadStream("./photo.jpg"),
   fileName: "photo.jpg",
   folder: "/uploads",
+  transformation: {
+    pre: "w-1600,h-1600,c-at_max,q-82",
+  },
 });
 
 // V1 still available as client.files.upload(...)
@@ -164,5 +203,6 @@ For one-off agent uploads, still use `scripts/upload.py`.
 
 - Platform: https://imagekit.io/
 - Upload File V2: https://imagekit.io/docs/api-reference/upload-file/upload-file-v2
+- Pre & post upload transformation: https://imagekit.io/docs/dam/pre-and-post-transformation-on-upload
 - API keys: https://imagekit.io/docs/api-keys
 - Node SDK: https://github.com/imagekit-developer/imagekit-nodejs

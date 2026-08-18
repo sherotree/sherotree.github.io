@@ -9,9 +9,17 @@ Usage:
   python3 scripts/upload.py ./photo.jpg --env-dir apps/3005-ox
   python3 scripts/upload.py https://example.com/a.png --file-name cover.png
   python3 scripts/upload.py ./logo.svg --name brand-logo --no-unique
+  python3 scripts/upload.py ./hero.png --compress
+  python3 scripts/upload.py ./hero.png --compress --quality 80 --max-width 1600
+  python3 scripts/upload.py ./hero.png --compress --image-format webp
+  python3 scripts/upload.py ./hero.png --pre "w-1200,q-75,f-jpg"
 
 Reads IMAGEKIT_PRIVATE_KEY from process env, else .env / .env.local
 (cwd → parents, or --env-dir). Optional default folder: IMAGEKIT_FOLDER.
+
+Compression uses ImageKit Upload API `transformation.pre` (server-side),
+not local Pillow/sips. Docs:
+https://imagekit.io/docs/dam/pre-and-post-transformation-on-upload
 """
 from __future__ import annotations
 
@@ -34,6 +42,18 @@ UPLOAD_ENDPOINT = "https://upload.imagekit.io/api/v2/files/upload"
 KEY_NAMES = ("IMAGEKIT_PRIVATE_KEY", "IMAGEKIT_PRIVATE_API_KEY")
 FOLDER_KEY_NAMES = ("IMAGEKIT_FOLDER", "IMAGEKIT_DEFAULT_FOLDER")
 ENV_FILENAMES = (".env", ".env.local")
+
+DEFAULT_QUALITY = 82
+DEFAULT_MAX_WIDTH = 1600
+
+# ImageKit format tokens: https://imagekit.io/docs/image-transformation
+FORMAT_TOKEN = {
+    "jpeg": "f-jpg",
+    "jpg": "f-jpg",
+    "webp": "f-webp",
+    "png": "f-png",
+    "auto": "f-auto",
+}
 
 
 def _strip_quotes(value: str) -> str:
@@ -182,6 +202,42 @@ def guess_filename(source: str, override: str | None) -> str:
     return Path(source).name
 
 
+def build_pre_transformation(
+    *,
+    quality: int,
+    max_width: int | None,
+    max_height: int | None,
+    image_format: str,
+) -> str:
+    """
+    Build ImageKit pre-transform string for Upload API.
+
+    Uses c-at_max so the image fits inside the box without upscaling.
+    Docs: https://imagekit.io/docs/image-transformation
+    """
+    parts: list[str] = []
+    width = max_width
+    height = max_height
+    if width or height:
+        # Square box with c-at_max ≈ longest-side cap when only one side given.
+        box_w = width or height
+        box_h = height or width
+        assert box_w is not None and box_h is not None
+        parts.append(f"w-{box_w}")
+        parts.append(f"h-{box_h}")
+        parts.append("c-at_max")
+    parts.append(f"q-{quality}")
+
+    fmt = image_format.strip().lower()
+    if fmt and fmt != "keep":
+        token = FORMAT_TOKEN.get(fmt)
+        if not token:
+            raise ValueError(f"unsupported --image-format: {image_format}")
+        parts.append(token)
+
+    return ",".join(parts)
+
+
 def build_multipart(
     fields: dict[str, str],
     file_field: str | None,
@@ -227,6 +283,7 @@ def upload(
     is_private: bool = False,
     overwrite: bool = False,
     env_dirs: list[Path] | None = None,
+    pre: str | None = None,
 ) -> dict[str, Any]:
     private_key = get_private_key(env_dirs)
     resolved_name = guess_filename(source, file_name)
@@ -245,6 +302,10 @@ def upload(
     if overwrite:
         fields["overwriteFile"] = "true"
         fields["useUniqueFileName"] = "false"
+    if pre:
+        # Upload API: transformation is an object { pre, post[] }.
+        # https://imagekit.io/docs/dam/pre-and-post-transformation-on-upload
+        fields["transformation"] = json.dumps({"pre": pre})
 
     file_field: str | None = None
     file_bytes: bytes | None = None
@@ -261,6 +322,7 @@ def upload(
         content_type = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
         if not file_name:
             fields["fileName"] = path.name
+            resolved_name = path.name
 
     body, content_type_header = build_multipart(
         fields,
@@ -285,12 +347,16 @@ def upload(
     try:
         with urlopen(req, timeout=120) as resp:
             raw = resp.read().decode()
-            return json.loads(raw)
+            result = json.loads(raw)
     except HTTPError as exc:
         detail = exc.read().decode(errors="replace")
         raise RuntimeError(f"ImageKit upload failed ({exc.code}): {detail}") from exc
     except URLError as exc:
         raise RuntimeError(f"ImageKit upload network error: {exc}") from exc
+
+    if pre:
+        result["transformation"] = {"pre": pre}
+    return result
 
 
 def parse_args() -> argparse.Namespace:
@@ -339,6 +405,51 @@ def parse_args() -> argparse.Namespace:
         help="Overwrite existing file with same name+folder",
     )
     parser.add_argument(
+        "--compress",
+        action="store_true",
+        help=(
+            "Apply ImageKit pre-transformation before storing in Media Library "
+            f"(default: w/h-{DEFAULT_MAX_WIDTH},c-at_max,q-{DEFAULT_QUALITY}). "
+            "See https://imagekit.io/docs/dam/pre-and-post-transformation-on-upload"
+        ),
+    )
+    parser.add_argument(
+        "--quality",
+        type=int,
+        default=None,
+        metavar="N",
+        help=f"ImageKit q-N (1–100). Default: {DEFAULT_QUALITY} with --compress",
+    )
+    parser.add_argument(
+        "--max-width",
+        type=int,
+        default=None,
+        metavar="PX",
+        help=f"Max width for pre-transform (default: {DEFAULT_MAX_WIDTH} with --compress)",
+    )
+    parser.add_argument(
+        "--max-height",
+        type=int,
+        default=None,
+        metavar="PX",
+        help="Max height for pre-transform (optional; pairs with --max-width via c-at_max)",
+    )
+    parser.add_argument(
+        "--image-format",
+        choices=("keep", "auto", "jpeg", "jpg", "webp", "png"),
+        default="keep",
+        help="ImageKit f-* in pre-transform (default: keep original format)",
+    )
+    parser.add_argument(
+        "--pre",
+        dest="pre",
+        metavar="TRANSFORM",
+        help=(
+            'Raw ImageKit pre string, e.g. "w-1200,q-75,f-jpg". '
+            "Overrides --compress / --quality / --max-* / --image-format."
+        ),
+    )
+    parser.add_argument(
         "--format",
         choices=("json", "url"),
         default="json",
@@ -361,6 +472,39 @@ def main() -> None:
     # --folder wins over positional folder
     folder = args.folder if args.folder is not None else args.folder_pos
 
+    pre: str | None = None
+    if args.pre and args.pre.strip():
+        pre = args.pre.strip()
+    elif args.compress:
+        quality = args.quality if args.quality is not None else DEFAULT_QUALITY
+        if not (1 <= quality <= 100):
+            print("error: --quality must be 1–100", file=sys.stderr)
+            sys.exit(1)
+        max_width = args.max_width
+        max_height = args.max_height
+        if max_width is None and max_height is None:
+            max_width = DEFAULT_MAX_WIDTH
+        try:
+            pre = build_pre_transformation(
+                quality=quality,
+                max_width=max_width,
+                max_height=max_height,
+                image_format=args.image_format,
+            )
+        except ValueError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            sys.exit(1)
+    elif any(
+        x is not None
+        for x in (args.quality, args.max_width, args.max_height)
+    ) or args.image_format != "keep":
+        print(
+            "error: --quality / --max-width / --max-height / --image-format "
+            "require --compress (or pass a full string with --pre)",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     try:
         result = upload(
             args.source,
@@ -371,6 +515,7 @@ def main() -> None:
             is_private=args.private,
             overwrite=args.overwrite,
             env_dirs=env_dirs or None,
+            pre=pre,
         )
     except Exception as exc:  # noqa: BLE001 - CLI boundary
         print(f"error: {exc}", file=sys.stderr)

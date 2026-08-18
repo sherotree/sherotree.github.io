@@ -12,7 +12,7 @@ draft: false
 
 下面按我自己做选型时的顺序整理：先弄清发生了什么，再决定要不要迁。
 
-![DeepSeek 2026 年价格相关节点时间线](./images/deepseek-price-timeline.png)
+![DeepSeek 2026 年价格相关节点时间线](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/deepseek-price-timeline_gaB1C4GX9.png)
 
 ## 一、先说一个具体麻烦
 
@@ -55,7 +55,7 @@ draft: false
 
 所谓「要不要换」，通常拆成三件事。
 
-![换不换先看缓存、时段与任务可迁移性](./images/deepseek-switch-three-checks.png)
+![换不换先看缓存、时段与任务可迁移性](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/deepseek-switch-three-checks_CAErNTQtF.png)
 
 ### 3.1 缓存命中率
 

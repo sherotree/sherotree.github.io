@@ -5,3 +5,5 @@ dist-publish/
 .DS_Store
 npm-debug.log*
 .playwright-cli
+.env
+.env.local

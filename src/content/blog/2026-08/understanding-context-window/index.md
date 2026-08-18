@@ -12,7 +12,7 @@ draft: false
 
 下面是我的整理：先讲具体麻烦，再讲 token 与窗口，最后落到日常怎么用。
 
-![上下文窗口像有限容量的行李箱](./images/context-window-suitcase.png)
+![上下文窗口像有限容量的行李箱](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/context-window-suitcase_9JxKQz6Z5.png)
 
 ## 一、先说一个具体麻烦
 
@@ -48,7 +48,7 @@ draft: false
 
 token 不是字符，也不完全是「一个英文单词」。它是分词器（tokenizer）切出来的小块文本。英文常见是词根、词缀；中文常见是字、词或更碎的片段。同一句话，不同模型的分词器，切法可能不同，token 数也会不同。
 
-![字符与 token 不是同一套尺子](./images/token-vs-char.png)
+![字符与 token 不是同一套尺子](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/token-vs-char_pE0vUID94.png)
 
 举例来说，「理解上下文」按字符数是 5。按 token 数，可能是大约 3～6，取决于模型。英文 `understanding` 可能是 1 个 token，也可能被拆成几段。
 
@@ -115,7 +115,7 @@ token 不是字符，也不完全是「一个英文单词」。它是分词器�
 
 自动截断省事，但「第一节那个接口名」可能正好被裁掉。这就是开头那个麻烦的来源。
 
-![上下文超窗时的常见处理路径](./images/context-window-flow.png)
+![上下文超窗时的常见处理路径](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/context-window-flow_4tZZmivga.png)
 
 ## 六、实践上怎么用
 

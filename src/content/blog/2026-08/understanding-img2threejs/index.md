@@ -13,7 +13,7 @@ img2threejs 是一套给 Agent 用的开源技能（Skill）：你给它一张�
 
 下面按我读仓库与官方文档后的理解，把它在干什么、怎么跑、边界在哪讲清楚。
 
-![常见 mesh 路线与 img2threejs 代码重建对照](./images/img2threejs-two-paths.png)
+![常见 mesh 路线与 img2threejs 代码重建对照](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/img2threejs-two-paths_TBZPUTKvt.png)
 
 ## 一、先说一个具体麻烦
 
@@ -29,7 +29,7 @@ img2threejs 是一套给 Agent 用的开源技能（Skill）：你给它一张�
 
 img2threejs 正是冲着这类工程问题来的。官方仓库：[img2threejs/img2threejs](https://github.com/img2threejs/img2threejs)。在线展览馆里的模型，也是生成代码在浏览器里跑： [img2threejs-showcase](https://img2threejs.github.io/img2threejs-showcase/)。
 
-![img2threejs showcase 展览馆：相机、电钻等可拆组件模型](./images/img2threejs-showcase-gallery.png)
+![img2threejs showcase 展览馆：相机、电钻等可拆组件模型](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/img2threejs-showcase-gallery_mlTWJKK0m.png)
 
 展览馆里的条目会标出类别和组件数。点进去可以在浏览器里检视层级、拆开装配，而不是只看一张静帧。
 
@@ -57,7 +57,7 @@ img2threejs 偏第二种。
 （E）浏览器渲染，打出一张参考图 vs 渲染的对比页  
 （F）Agent 用视觉判分：过关则继续，不过则改规格或改代码
 
-![img2threejs 从参考图到模型的流水线](./images/img2threejs-pipeline.png)
+![img2threejs 从参考图到模型的流水线](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/img2threejs-pipeline_TnSDP-CvA.png)
 
 这里有一个设计重心：**Python 脚本负责机械活，模型只负责看图判断**。
 
@@ -71,7 +71,7 @@ img2threejs 偏第二种。
 
 可以粗读成：先搭块、再定结构、再修形体、再材质表面、再灯光、再交互，最后优化。
 
-![八个雕刻阶段依次解锁](./images/img2threejs-passes.png)
+![八个雕刻阶段依次解锁](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/img2threejs-passes_mAU-kteul.png)
 
 每一关要通过，通常得有：真实渲染、对比页、视觉分数够线，以及身份相关细节各自过阈值。不过关，Agent 只能选有限动作，例如 `continue`、`refine-spec`、`refine-code`、`request-input`、`stop`——不是无限糊墙式重试。
 

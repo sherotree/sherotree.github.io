@@ -12,7 +12,7 @@ HTTP 状态码（status code）是服务器对一次请求给出的三位数结�
 
 下面只收日常高频的那些，并说明「该谁处理」。
 
-![HTTP 状态码四大类](./images/http-status-families.png)
+![HTTP 状态码四大类](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/http-status-families_mzzLSj0Gh.png)
 
 ## 一、先记住四个百位
 
@@ -103,7 +103,7 @@ HTTP 状态码（status code）是服务器对一次请求给出的三位数结�
 
 网关等上游超时。查上游耗时、超时配置、是否慢查询，而不是只加大前端 `fetch` 等待。
 
-![日常高频状态码速查](./images/http-status-cheat.png)
+![日常高频状态码速查](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/http-status-cheat_7ruuW5PT4.png)
 
 ## 六、前后端各自怎么用
 

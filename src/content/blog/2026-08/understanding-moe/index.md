@@ -12,7 +12,7 @@ MoE（Mixture of Experts，混合专家）是一种把模型拆成多组「专�
 
 下面用尽量直白的方式，说明 MoE 在优化什么，以及它不解决什么。
 
-![稠密模型与 MoE 稀疏激活对比](./images/moe-dense-vs-sparse.png)
+![稠密模型与 MoE 稀疏激活对比](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/moe-dense-vs-sparse_C1K0G1vhF.png)
 
 ## 一、先说一个具体麻烦
 
@@ -39,7 +39,7 @@ MoE（Mixture of Experts，混合专家）是一种把模型拆成多组「专�
 
 所谓「稀疏激活」（sparse activation），指的就是：大量专家参数存在，但这一步多数处于休眠，不算进本次前向开销。
 
-![路由器挑选少数专家参与计算](./images/moe-router-experts.png)
+![路由器挑选少数专家参与计算](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/moe-router-experts_kgixGe2aU.png)
 
 ## 三、一次推理大致怎么走
 
@@ -51,7 +51,7 @@ MoE（Mixture of Experts，混合专家）是一种把模型拆成多组「专�
 （D）按门控权重加权合并  
 （E）结果进入后续层（注意力等仍可能是稠密的）
 
-![MoE 层内从路由到合并的流程](./images/moe-inference-flow.png)
+![MoE 层内从路由到合并的流程](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/moe-inference-flow_VT9tBG-sM.png)
 
 不难看出：省的是「专家计算」那一块的算力；不是把整个 Transformer 都变成免费的。注意力、嵌入、非 MoE 层，该算还是算。
 

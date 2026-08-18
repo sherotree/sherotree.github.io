@@ -12,7 +12,7 @@ SVG（Scalable Vector Graphics，可缩放矢量图形）是用 XML 描述的矢
 
 下面把三种用法拆开，并给出怎么选。
 
-![SVG 三种用法对照](./images/svg-three-ways.png)
+![SVG 三种用法对照](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/svg-three-ways_qzzjC7FN0.png)
 
 ## 一、先说一个具体麻烦
 
@@ -129,7 +129,7 @@ export function CircleIcon({ size = 24, className, title }: IconProps) {
 （2）要改颜色 / 做简单交互，且出现次数少 → 内联  
 （3）多处复用、要统一 props → 组件
 
-![按需求选择 SVG 用法](./images/svg-when-to-choose.png)
+![按需求选择 SVG 用法](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/svg-when-to-choose_zu2XgU08K.png)
 
 补充两条经验：
 

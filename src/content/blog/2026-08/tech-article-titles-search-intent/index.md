@@ -12,7 +12,7 @@ draft: false
 
 下面按「搜索意图」来起标题：先想人会怎么搜，再决定标题长什么样。
 
-![三种常见搜索意图](./images/title-search-intents.png)
+![三种常见搜索意图](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/title-search-intents_xf4RJEnDf.png)
 
 ## 一、先分清读者在搜什么
 
@@ -44,7 +44,7 @@ draft: false
 （2）纯情绪词堆叠与过多感叹号  
 （3）只有比喻、没有对象：「给你一把打开网络的钥匙」（读者无法判断主题）
 
-![营销标题与搜索向标题对比](./images/title-bad-vs-good.png)
+![营销标题与搜索向标题对比](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/title-bad-vs-good_6y6YwaLZz.png)
 
 ## 三、一条可复用的起标题流程
 
@@ -81,7 +81,7 @@ draft: false
 
 删「必看 / 终极 / 从入门到精通（若你其实只写入门）」这类名不副实的词。标题可以短，但不能假。
 
-![从搜索词到标题的四步](./images/title-writing-steps.png)
+![从搜索词到标题的四步](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/title-writing-steps_m4uY_xq_v.png)
 
 ## 四、多平台怎么改，而不要另起炉灶
 

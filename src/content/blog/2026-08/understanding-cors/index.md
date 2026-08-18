@@ -12,7 +12,7 @@ CORS（Cross-Origin Resource Sharing，跨源资源共享）是浏览器的一�
 
 下面按「浏览器在防什么 → 什么算跨源 → 简单请求与预检 → 怎么正确放行」说明。
 
-![浏览器拦截缺少 CORS 头的跨源响应](./images/cors-browser-block.png)
+![浏览器拦截缺少 CORS 头的跨源响应](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/cors-browser-block_eoZQuThBg.png)
 
 ## 一、先说一个具体麻烦
 
@@ -66,7 +66,7 @@ CORS 就是跨源时的「通行证」协议：服务端用响应头声明「我
 （3）`Access-Control-Allow-Headers`  
 （4）可选：`Access-Control-Max-Age`（预检缓存多久）
 
-![CORS 预检 OPTIONS 后再发正式请求](./images/cors-preflight.png)
+![CORS 预检 OPTIONS 后再发正式请求](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/cors-preflight_Yk6LsaLEd.png)
 
 下面是一个预检响应的示意。
 
@@ -112,7 +112,7 @@ await fetch("https://api.example.com/me", {
 （5）自定义头 / 方法是否出现在 `Allow-Headers` / `Allow-Methods`？  
 （6）网关、CDN、反向代理有没有把 OPTIONS 或 CORS 头吃掉？
 
-![CORS 排障四步检查](./images/cors-checklist.png)
+![CORS 排障四步检查](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/cors-checklist_VlYvTbnDm.png)
 
 本地开发常见做法是：开发服务器代理到 API（同源相对路径），生产再由网关统一加 CORS。这样能减少「本地一套、线上一套」的混乱，但生产仍要明确允许哪些源。
 

@@ -12,7 +12,7 @@ draft: false
 
 下面整理我实际选用的标准：它在干什么、什么时候值得开、什么时候开了也救不了。
 
-![普通模式与思考模式两条路径](./images/thinking-mode-two-paths.png)
+![普通模式与思考模式两条路径](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/thinking-mode-two-paths_H6eVczLEZ.png)
 
 ## 一、先说一个具体麻烦
 
@@ -60,7 +60,7 @@ draft: false
 
 一句话：难题若卡在「想清楚」，开；卡在「信息不够」，先补材料。
 
-![按题型决定是否开启思考模式](./images/thinking-mode-when.png)
+![按题型决定是否开启思考模式](https://ik.imagekit.io/4pjac7gmxh/blog/2026/08/thinking-mode-when_cRjqTifrA.png)
 
 ## 四、和「把提示写清楚」是什么关系
 

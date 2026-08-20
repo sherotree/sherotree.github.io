@@ -12,7 +12,7 @@ draft: true
 
 下面按「为什么要流 → SSE 是什么 → 聊天里怎么用 → 边界」说明。
 
-![一次性返回与 SSE 流式对比](./images/sse-vs-oneshot.png)
+![一次性返回与 SSE 流式对比](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/sse-vs-oneshot_sCXiD16hG.png)
 
 ## 一、先说一个具体麻烦
 
@@ -48,7 +48,7 @@ data: [DONE]
 
 上面文本中，每条 `data:` 后面是载荷；空行分隔事件。聊天场景里，载荷常常是增量文本，或一层 JSON（含 delta 字段）。具体协议由各家 API 约定，但「长连接 + 多次 data」的骨架类似。
 
-![服务端按 data 行推送，客户端追加到界面](./images/sse-event-stream.png)
+![服务端按 data 行推送，客户端追加到界面](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/sse-event-stream_Fat9OIe00.png)
 
 和 WebSocket 比，SSE 的直觉是：
 

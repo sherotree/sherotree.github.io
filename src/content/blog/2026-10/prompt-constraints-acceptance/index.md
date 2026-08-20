@@ -10,7 +10,7 @@ Prompt（提示词）是你给模型的任务说明。写得含糊，输出就�
 
 很多人习惯堆形容词：「写得优雅、专业、全面、生产级」。这些词对人有感觉，对模型几乎没有可执行标准。更有效的写法是：**约束（不要做什么）+ 验收（怎样算完成）**。
 
-![形容词提示与约束验收提示对比](./images/prompt-adj-vs-constraints.png)
+![形容词提示与约束验收提示对比](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/prompt-adj-vs-constraints_8jUieGFET.png)
 
 ## 一、先说一个具体麻烦
 
@@ -64,7 +64,7 @@ Prompt（提示词）是你给模型的任务说明。写得含糊，输出就�
 
 约束管「别跑偏」，验收管「何时停」。两者一起，才构成一张小工单。
 
-![目标、约束、验收的提示模板](./images/prompt-template-card.png)
+![目标、约束、验收的提示模板](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/prompt-template-card_7ermCh2IM.png)
 
 ## 四、一个可复用模板
 

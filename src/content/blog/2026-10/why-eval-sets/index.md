@@ -11,7 +11,7 @@ draft: true
 
 演示很会骗人：挑一个熟题，现场一次成功，不等于可上线。换个仓库、换个错误形态，就翻车。
 
-![单次演示与评测集对照](./images/eval-vs-demo.png)
+![单次演示与评测集对照](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/eval-vs-demo_HLlwUtnkQ.png)
 
 ## 一、先说一个具体麻烦
 
@@ -50,7 +50,7 @@ draft: true
 
 ## 四、怎么跑、怎么看
 
-![评测：跑题、打分、改进、再回归](./images/eval-loop.png)
+![评测：跑题、打分、改进、再回归](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/eval-loop_kFzPqZOLN.png)
 
 （1）固定模型与工具版本，记录下来  
 （2）自动跑能自动的验收；人工只审难自动项  

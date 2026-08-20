@@ -11,7 +11,7 @@ Agent 靠工具调用（tool calling）读写文件、跑命令、查接口。�
 
 本系列叫「Agent 工程笔记」。第一篇只建立排查顺序：先分清失败发生在哪一层，再决定改提示、改 schema，还是改环境。
 
-![工具失败的三层：决策、协议、执行](./images/tool-fail-three-layers.png)
+![工具失败的三层：决策、协议、执行](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/tool-fail-three-layers_Cfbec0d_W.png)
 
 ## 一、先说一个具体麻烦
 
@@ -41,7 +41,7 @@ Agent 靠工具调用（tool calling）读写文件、跑命令、查接口。�
 
 症状：命令找不到、权限拒绝、连不上、超时、磁盘只读。
 
-![失败后按三层依次检查](./images/tool-fail-flow.png)
+![失败后按三层依次检查](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/tool-fail-flow_4XBXttdzF.png)
 
 ## 三、推荐排查顺序
 

@@ -10,7 +10,7 @@ pnpm workspace 是用 pnpm 包管理器把多个 package 放进同一仓库协�
 
 前端与 Node 项目长大以后，常拆成 `apps/*` 与 `packages/*`。没有 workspace，你会陷入：改共享库要先发版，再在应用里升版本，来回折腾。
 
-![apps 与 packages 组成的 workspace](./images/pnpm-workspace-boxes.png)
+![apps 与 packages 组成的 workspace](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/pnpm-workspace-boxes_IR-AE9J2U.png)
 
 ## 一、先说一个具体麻烦
 
@@ -65,7 +65,7 @@ pnpm install
 
 pnpm 会处理 workspace 拓扑，并以其硬链/内容寻址方式管理依赖，减少重复拷贝（实现细节可随版本变化，心智模型是「省空间、严开销」）。
 
-![workspace 协议把本地包链接起来](./images/pnpm-link-flow.png)
+![workspace 协议把本地包链接起来](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/pnpm-link-flow_Gy_O1jenh.png)
 
 ## 四、它解决什么，不解决什么
 

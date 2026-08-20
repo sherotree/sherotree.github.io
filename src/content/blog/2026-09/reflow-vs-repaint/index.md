@@ -10,7 +10,7 @@ draft: true
 
 性能讨论里这两个词出现频率极高，也极容易被混用。有人改个颜色就说「触发重排」，有人把所有卡顿都归咎于「重绘太多」。分清以后，优化才有靶子。
 
-![从 Layout 到 Paint 再到合成](./images/reflow-repaint-pipeline.png)
+![从 Layout 到 Paint 再到合成](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/reflow-repaint-pipeline_8J3lzQTUF.png)
 
 ## 一、先说一个具体麻烦
 
@@ -40,7 +40,7 @@ draft: true
 
 ## 三、什么容易触发重排，什么可能只重绘
 
-![几何变化偏重排，颜色变化可能只重绘](./images/reflow-vs-repaint-triggers.png)
+![几何变化偏重排，颜色变化可能只重绘](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/reflow-vs-repaint-triggers_bxlHtS44k.png)
 
 更常牵涉重排的（示例，非完整表）：
 

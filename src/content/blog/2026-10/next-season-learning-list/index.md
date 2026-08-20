@@ -10,7 +10,7 @@ draft: true
 
 你若愿意继续看这类文，可以按下面清单追；我若脱节，你也有权用清单催更或弃订。
 
-![下一季主题清单](./images/next-season-list.png)
+![下一季主题清单](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/next-season-list_POfDr26Bh.png)
 
 ## 一、清单原则
 
@@ -19,7 +19,7 @@ draft: true
 （3）图形专栏可出「应用篇」，不再只停在原理  
 （4）仍零软广优先；若日后挂归档链接，单独说明
 
-![下一季仍用三问选热点](./images/season-plan-three-q.png)
+![下一季仍用三问选热点](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/season-plan-three-q_GcV5bNS-A.png)
 
 ## 二、主题清单（公开版）
 

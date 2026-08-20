@@ -10,7 +10,7 @@ MIT License 是一种宽松的开源许可证。许多前端库、工具与 SDK 
 
 对使用者，真正要记住的不是法律史，而是三件事：**你可以做什么、你必须保留什么、出了问题谁负责**。
 
-![MIT：权限、条件、无担保](./images/mit-permissions.png)
+![MIT：权限、条件、无担保](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/mit-permissions_JOfjdgldk.png)
 
 ## 一、先说一个具体麻烦
 
@@ -52,7 +52,7 @@ MIT 文本通常明确：软件按「AS IS」提供，作者不承担因使用�
 （2）线上事故，责任与风险要自己的工程与合规流程扛  
 （3）安全审计、测试、升级策略仍是你的事
 
-![MIT 与专有授权的直觉对比](./images/mit-vs-proprietary.png)
+![MIT 与专有授权的直觉对比](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/mit-vs-proprietary_Hw2muY4JC.png)
 
 ## 五、对使用者的决策清单
 

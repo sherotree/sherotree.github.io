@@ -10,7 +10,7 @@ WebAssembly（简称 Wasm）是一种可在浏览器（以及越来越多其它�
 
 宣传语常说「近原生性能」。对前端来说，更有用的问题是：哪些工作 JS 吃力，Wasm 才值得上；以及它**不**解决什么。
 
-![JavaScript 与 WebAssembly 的分工](./images/wasm-js-roles.png)
+![JavaScript 与 WebAssembly 的分工](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/wasm-js-roles_UPauKM9RF.png)
 
 ## 一、先说一个具体麻烦
 
@@ -36,7 +36,7 @@ Wasm 要解决的，正是这类问题：**让可移植的编译型代码，在 
 （2）**复用现有原生生态**，而不是全部重写  
 （3）在沙箱里跑，仍受 Web 安全与权限模型约束
 
-![从源码到浏览器中的 Wasm 模块](./images/wasm-pipeline.png)
+![从源码到浏览器中的 Wasm 模块](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/wasm-pipeline_id9gggeCz.png)
 
 ## 三、和 JavaScript 怎么分工
 

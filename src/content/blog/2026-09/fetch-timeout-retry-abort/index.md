@@ -10,7 +10,7 @@ draft: true
 
 线上接口偶发超时、网关 503、限流 429，若页面一直转圈或疯狂连打，体验与服务都会受伤。下面把三件事拆开：超时怎么取消、什么错误值得重试、怎么和 AbortController 配合。
 
-![用 AbortController 做超时取消](./images/fetch-abort-timeout.png)
+![用 AbortController 做超时取消](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/fetch-abort-timeout_7_E4d-PSz.png)
 
 ## 一、先说一个具体麻烦
 
@@ -78,7 +78,7 @@ export async function fetchWithTimeout(url, options = {}, ms = 8000) {
 （1）`400` / `401` / `403` / `404` / `422`（改请求或鉴权，不是再打一次）  
 （2）非幂等 POST 已可能成功但响应丢失——重试可能造成重复下单（需幂等键）
 
-![可重试错误才退避重试](./images/fetch-retry-backoff.png)
+![可重试错误才退避重试](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/fetch-retry-backoff_rPgTz7Rx4.png)
 
 ## 五、退避重试的最小形状
 

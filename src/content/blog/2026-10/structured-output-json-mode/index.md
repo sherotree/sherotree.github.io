@@ -10,7 +10,7 @@ draft: true
 
 聊天可以是散文；自动化要把结果喂给代码。这时「大概是个 JSON」不够，缺字段或尾随逗号都会让流水线断掉。
 
-![自由文本与 JSON Mode 对照](./images/json-mode-vs-free.png)
+![自由文本与 JSON Mode 对照](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/json-mode-vs-free_aWYCGY41Z.png)
 
 ## 一、先说一个具体麻烦
 
@@ -35,7 +35,7 @@ draft: true
 （C）拿到字符串后仍做一次解析与校验  
 （D）失败则重试或降级
 
-![Schema 约束有效 JSON 输出](./images/json-schema-flow.png)
+![Schema 约束有效 JSON 输出](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/json-schema-flow_clpUCm1MK.png)
 
 下面是一个最小 schema 直觉（示意）。
 

@@ -12,7 +12,7 @@ MCP（Model Context Protocol，模型上下文协议）是一种让 AI 应用（
 
 下面说明它在解决什么问题、基本角色分工，以及一次调用怎么走完。
 
-![宿主通过 MCP 连接多个工具服务器](./images/mcp-host-servers.png)
+![宿主通过 MCP 连接多个工具服务器](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/mcp-host-servers_NL2kHzDw1.png)
 
 ## 一、先说一个具体麻烦
 
@@ -47,7 +47,7 @@ MCP 要缓解的，正是这种**对接爆炸**：工具做成 MCP Server，宿�
 （E）结果返回宿主，进入上下文  
 （F）模型继续推理：再调工具，或给出最终回答
 
-![模型选工具、执行、再回答的循环](./images/mcp-tool-loop.png)
+![模型选工具、执行、再回答的循环](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/mcp-tool-loop_r8c3xTCjR.png)
 
 不难看出：MCP 管的是 **B–E 的标准管道**；模型是否会选对工具，仍取决于提示、权限与产品策略。
 

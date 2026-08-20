@@ -11,7 +11,7 @@ ImageData 是 Canvas 里表示一块矩形像素的数据对象：宽度、高�
 
 上一篇画了第一根线。线是「路径指令」；滤镜、取色、简单识别，往往要碰到「每个像素」。本篇只建立最小路径：把像素读出来、改一改、写回去。
 
-![ImageData 中 RGBA 字节排列](./images/imagedata-rgba.png)
+![ImageData 中 RGBA 字节排列](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/imagedata-rgba_A_Gs-2gRE8.png)
 
 ## 一、为什么需要碰像素
 
@@ -55,7 +55,7 @@ const a = data[i + 3]
 （B）改 `data`  
 （C）`putImageData(imageData, x, y)` 写回
 
-![getImageData 修改后 putImageData](./images/imagedata-pipeline.png)
+![getImageData 修改后 putImageData](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/imagedata-pipeline_PPby1gYNi.png)
 
 下面做一个最小灰度示例（假定画布上已有内容）。
 

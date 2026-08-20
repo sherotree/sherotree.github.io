@@ -10,7 +10,7 @@ draft: true
 
 同一周里，阅读暴涨不一定等于搜索变好，也不等于粉丝留下。把三个指标当成同一回事，会做出错误选题决策。
 
-![阅读、搜索、关注的漏斗关系](./images/platform-metrics-funnel.png)
+![阅读、搜索、关注的漏斗关系](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/platform-metrics-funnel_bF3J-mEyf.png)
 
 ## 一、先说一个具体麻烦
 
@@ -55,7 +55,7 @@ draft: true
 
 纯热点快评往往阅读高、关注弱：读者吃完就走。
 
-![三项指标分别看什么](./images/platform-metrics-tips.png)
+![三项指标分别看什么](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/platform-metrics-tips_3a7qO9Q8p.png)
 
 ## 五、怎么用来改下周选题
 

@@ -10,7 +10,7 @@ draft: true
 
 长上下文越来越常见，全量注意力的代价也越来越显眼。资料里又出现 DSA、各种稀疏模式缩写。先抓住它在优化什么，再记名字。
 
-![稠密注意力与稀疏连接对照](./images/sparse-vs-dense-attn.png)
+![稠密注意力与稀疏连接对照](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/sparse-vs-dense-attn_FPZNA0l3K.png)
 
 ## 一、先说一个具体麻烦
 
@@ -30,7 +30,7 @@ draft: true
 （2）内存（尤其随长度变差的部分）  
 （3）从而支撑更长上下文或更低延迟/成本
 
-![序列变长时全量注意力更贵](./images/attention-cost-curve.png)
+![序列变长时全量注意力更贵](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/attention-cost-curve_oLkigghO4.png)
 
 ## 三、DSA 等名字怎么放进脑子里
 

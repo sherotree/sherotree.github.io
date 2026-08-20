@@ -13,7 +13,7 @@ draft: true
 
 本篇只讲原理，不谈修图软件按钮。
 
-![位图放大变糊与矢量可缩放对照](./images/bitmap-vs-vector-scale.png)
+![位图放大变糊与矢量可缩放对照](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/bitmap-vs-vector-scale_qVZ-sfAPW.png)
 
 ## 一、先说一个具体麻烦
 
@@ -40,7 +40,7 @@ draft: true
 最近邻（nearest）：一个源像素变成一大块同色方块 → 马赛克感强，边缘硬。  
 双线性等插值：用邻近像素估计中间色 → 更平滑，但边缘也会发虚，像被抹过。
 
-![源像素被放大成色块，插值只是平滑猜测](./images/bitmap-sampling-blocks.png)
+![源像素被放大成色块，插值只是平滑猜测](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/bitmap-sampling-blocks_B_XGWnInm.png)
 
 两种结果不同，共同点是：**信息量没有凭空增加**。插值不是「找回」相机没拍到的细节，只是用邻居做更顺眼的猜测。
 

@@ -10,7 +10,7 @@ Google 在推出 Gemini 3 一代能力时，同步介绍了面向开发者的 ag
 
 热点容易写成「又一个 Cursor 竞品」。对开发者更有用的，仍是三问：**是什么、怎么用、怎么选**。
 
-![评估更新的三个问题](./images/hot-take-three-q.png)
+![评估更新的三个问题](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/hot-take-three-q_TE19Cflqu.png)
 
 ## 一、是什么
 
@@ -21,7 +21,7 @@ Google 在推出 Gemini 3 一代能力时，同步介绍了面向开发者的 ag
 （3）Agent 可规划并执行复杂软件任务，并触达编辑器、终端、浏览器等  
 （4）与 Gemini 3 的推理与工具使用能力绑定宣传
 
-![Agent 同时使用编辑器、终端、浏览器](./images/antigravity-agent-ide.png)
+![Agent 同时使用编辑器、终端、浏览器](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/antigravity-agent-ide_pGq5LI2Rz.png)
 
 一句话：把「人在 IDE 里偶尔叫 Agent」推进到「任务级 Agent 在 IDE 里办事，人做审查与决策」。
 

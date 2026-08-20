@@ -12,7 +12,7 @@ JWT（JSON Web Token）是一种把声明（claims）编码成可传递字符串
 
 下面按结构拆开讲。
 
-![JWT 的 Header、Payload、Signature 三段](./images/jwt-three-parts.png)
+![JWT 的 Header、Payload、Signature 三段](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/jwt-three-parts_NXkc_Rg2M.png)
 
 ## 一、先说一个具体麻烦
 
@@ -86,7 +86,7 @@ signature = HMAC_SHA256(
 
 ## 四、一次典型校验流程
 
-![客户端携带 JWT，服务端验签](./images/jwt-flow.png)
+![客户端携带 JWT，服务端验签](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/jwt-flow_lYbpNV9X8.png)
 
 （A）用户登录，认证服务签发 JWT  
 （B）客户端存储（怎么存是另一话题：内存、HttpOnly Cookie 等各有取舍）  

@@ -12,7 +12,7 @@ merge 与 rebase 都是把「一条线上的新提交」合进「另一条线」
 
 下面先讲各自解决什么问题，再讲怎么选。
 
-![merge 保留分叉与 rebase 变直历史](./images/git-merge-vs-rebase.png)
+![merge 保留分叉与 rebase 变直历史](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/git-merge-vs-rebase_bwtlHdqYa.png)
 
 ## 一、先说一个具体麻烦
 
@@ -84,7 +84,7 @@ git rebase origin/main
 （2）已经 push 到共享远程、别人可能拉过 → 优先 merge；若必须 rebase，需要团队明确约定并协调  
 （3）受保护的主干（`main` / `master`）→ 不要 rebase 公共历史
 
-![已分享的提交慎用 rebase](./images/git-when-merge-rebase.png)
+![已分享的提交慎用 rebase](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/git-when-merge-rebase_A60bzKGjF.png)
 
 很多团队的折中是：
 

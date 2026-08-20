@@ -12,7 +12,7 @@ draft: true
 
 下面五个问题，建议在点下载之前就问完。
 
-![本地跑模型前的五个问题](./images/local-llm-five-questions.png)
+![本地跑模型前的五个问题](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/local-llm-five-questions_XZTpyemR3.png)
 
 ## 一、许可证允许你怎么用？
 
@@ -37,7 +37,7 @@ draft: true
 （2）上下文越长，KV cache 越吃显存  
 （3）显存不够时，可能落到系统内存 / 磁盘卸载，速度会断崖式变慢
 
-![权重与上下文一起占用显存](./images/local-llm-vram.png)
+![权重与上下文一起占用显存](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/local-llm-vram_Au3ToxpIy.png)
 
 实操建议：
 

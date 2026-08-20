@@ -13,7 +13,7 @@ draft: true
 
 混用的代价是：以为自己在写 TypeScript，实际在关键路径上退回了 JavaScript。
 
-![any 可随意用，unknown 需先收窄](./images/unknown-vs-any.png)
+![any 可随意用，unknown 需先收窄](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/unknown-vs-any_OEoseb2mP.png)
 
 ## 一、先说一个具体麻烦
 
@@ -58,7 +58,7 @@ function getName(input: unknown): string {
 
 上面代码中，每一步都在缩小可能类型；最后才当 `string` 用。也可在边界用 zod 等 schema，一次解析出类型。
 
-![unknown 经检查收窄后才能安全使用](./images/unknown-narrowing.png)
+![unknown 经检查收窄后才能安全使用](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/unknown-narrowing_YJXAnsLOh.png)
 
 `any` 不逼你走这条路，所以快，也容易把错误推迟到线上。
 

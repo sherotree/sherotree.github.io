@@ -11,7 +11,7 @@ Canvas 是浏览器提供的一块位图画布：你用脚本下指令，像素�
 
 本系列叫「浏览器里的图形」。第一篇只做一件事：从一张空白 `<canvas>` 走到屏幕上的第一根线。不引入框架，不讲性能玄学，先把坐标系和路径节奏跑通。
 
-![Canvas 坐标系与第一根线](./images/canvas-coords-first-line.png)
+![Canvas 坐标系与第一根线](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/canvas-coords-first-line_cUSwpaB49.png)
 
 ## 一、为什么从「一根线」开始
 
@@ -62,7 +62,7 @@ Canvas 2D 默认：
 （D）设置 `strokeStyle` / `lineWidth`（可在 stroke 前）  
 （E）`stroke()` 真正描边
 
-![从 beginPath 到 stroke 的五步](./images/canvas-draw-steps.png)
+![从 beginPath 到 stroke 的五步](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/canvas-draw-steps_gxSPYL3lo.png)
 
 完整示例如下。
 

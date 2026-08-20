@@ -10,13 +10,13 @@ Cursor 在 2026 年 8 月 3 日的更新里，为 Agent 提供了 Google Workspa
 
 编辑器里的 Agent 本来就在改代码、跑命令。现在它可以在授权后读邮件、翻网盘、看日程。热点讨论容易停在「好方便」或「好可怕」。对开发者更有用的，仍是三件事：**是什么、怎么开、值不值得开**。
 
-![评估产品更新的三个问题](./images/editor-update-three-q.png)
+![评估产品更新的三个问题](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/editor-update-three-q_64eporrAF.png)
 
 ## 一、这一周前后相关动态
 
 同阶段 Cursor 还有其它更新（如 Auto 模式与 Router、iPad 端能力等）。本篇主线只取 Workspace 插件：它直接改变 Agent「能碰哪些工作上下文」。
 
-![Agent 连接 Gmail、Drive、Calendar](./images/cursor-workspace-plugins.png)
+![Agent 连接 Gmail、Drive、Calendar](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/cursor-workspace-plugins_hUJMSApEc.png)
 
 官方 changelog 的能力摘要如下。
 

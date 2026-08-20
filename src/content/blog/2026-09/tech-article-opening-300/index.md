@@ -12,7 +12,7 @@ draft: true
 
 下面给一套可复用的三拍写法，专门对准搜索与完读，不对准喊口号。
 
-![开篇三拍：定义、痛点、承诺](./images/opening-three-beats.png)
+![开篇三拍：定义、痛点、承诺](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/opening-three-beats_f19YkgeyQ.png)
 
 ## 一、先看坏开头长什么样
 
@@ -25,7 +25,7 @@ draft: true
 
 它们共同问题是：读者无法在 20 秒内回答「这是什么、关我什么事、文中会讲清什么」。
 
-![营销悬念开头与清晰三拍对比](./images/opening-bad-vs-good.png)
+![营销悬念开头与清晰三拍对比](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/opening-bad-vs-good_jRfo59Sg3.png)
 
 ## 二、三拍结构（合计大约 300 字）
 

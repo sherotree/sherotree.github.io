@@ -10,7 +10,7 @@ draft: true
 
 现在复盘，不谈感觉，谈机制：阅读、搜索、关注大概分别被哪类稿养活。
 
-![题型与流量结构示意](./images/retro-content-mix.png)
+![题型与流量结构示意](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/retro-content-mix_wR5arK0WF.png)
 
 ## 一、先承认：没有完美数据也要复盘
 
@@ -42,7 +42,7 @@ draft: true
 贡献：完读与信任（标题、开头、数据怎么看）。  
 量少，但稳住「这个人会讲清楚」的印象。
 
-![复盘四条教训](./images/retro-lessons.png)
+![复盘四条教训](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/retro-lessons_R5H8sh09w.png)
 
 ## 三、流量与关注的粗线条答案
 

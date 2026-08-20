@@ -10,7 +10,7 @@ draft: true
 
 本文当加强版详解：把分散概念收成**上下文工程**最小闭环。无真实后台数据时，选题依据是计划内高频主线，而非伪造点击率。
 
-![上下文工程流水线](./images/context-eng-pipeline.png)
+![上下文工程流水线](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/context-eng-pipeline_vsU1IDWOv.png)
 
 ## 一、一句话定义
 
@@ -41,7 +41,7 @@ draft: true
 
 错位的典型：把证据层全历史永久塞进宪法层。
 
-![裁剪时保留规则与目标](./images/context-cut-keep.png)
+![裁剪时保留规则与目标](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/context-cut-keep_A1ur1koXz.png)
 
 ## 四、裁剪算法（可执行）
 

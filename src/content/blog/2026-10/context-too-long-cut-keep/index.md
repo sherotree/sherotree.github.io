@@ -11,7 +11,7 @@ draft: true
 
 上一篇讲工具失败分层。本篇讲材料管理：窗有限，必须取舍。
 
-![砍掉过期闲聊，留下规则与目标](./images/context-cut-keep.png)
+![砍掉过期闲聊，留下规则与目标](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/context-cut-keep_O8duzS_5d.png)
 
 ## 一、先说一个具体麻烦
 
@@ -34,7 +34,7 @@ Agent 跑了四十轮：读文件、跑测试、改代码、再读日志。到�
 （4）与当前决策直接相关的代码/日志片段  
 （5）最近一轮工具结果（若仍相关）
 
-![上下文保留优先级](./images/context-priority.png)
+![上下文保留优先级](https://ik.imagekit.io/4pjac7gmxh/blog/2026/10/context-priority_lPfrNGexX.png)
 
 ## 四、砍什么
 

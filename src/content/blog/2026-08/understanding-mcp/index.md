@@ -3,6 +3,7 @@ title: 理解 MCP：模型如何接上外部工具
 date: 2026-08-15
 description: 用白话说明 Model Context Protocol（MCP）：宿主如何通过统一协议把文件系统、数据库等工具接到模型，以及工具循环怎么转。
 tags: [AI, MCP, Agent, 工具调用]
+series: understanding-ai
 draft: true
 ---
 

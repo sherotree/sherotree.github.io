@@ -3,6 +3,7 @@ title: Prompt 里「约束 + 验收」为什么比形容词有用
 date: 2026-08-16
 description: 说明给模型写提示时，用可检查的约束与验收条件，为何比「优雅、专业、全面」一类形容词更能得到稳定结果。
 tags: [AI, Prompt, 方法论, Agent]
+series: understanding-ai
 draft: true
 ---
 

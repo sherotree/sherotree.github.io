@@ -3,6 +3,7 @@ title: 理解「思考模式」：什么时候该开
 date: 2026-08-16
 description: 说明大模型「思考模式 / 推理模式」在多花什么、适合哪类题，以及什么时候先改提示比先开开关更有用。
 tags: [AI, 基础概念, 思考模式, 推理]
+series: understanding-ai
 draft: false
 ---
 

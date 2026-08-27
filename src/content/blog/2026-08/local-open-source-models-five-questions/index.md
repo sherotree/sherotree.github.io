@@ -3,6 +3,7 @@ title: 本地跑开源模型前要问的 5 个问题
 date: 2026-08-03
 description: 在本机或局域网部署开源大模型前，先问清许可证、显存、量化、推理框架与用途上下文，避免下完权重才发现跑不动或不能商用。
 tags: [AI, 开源模型, 本地部署, 显存]
+series: understanding-ai
 draft: true
 ---
 

@@ -3,6 +3,7 @@ title: 理解流式输出：SSE 在聊天里干什么
 date: 2026-08-09
 description: 说明聊天产品里的流式输出常见实现 SSE：服务器按事件推送文本碎片，前端边收边渲染，以及它解决什么、不替代什么。
 tags: [SSE, 流式输出, 前端, AI 应用]
+series: understanding-ai
 draft: true
 ---
 

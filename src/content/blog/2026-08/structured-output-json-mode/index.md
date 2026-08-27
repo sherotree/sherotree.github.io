@@ -3,6 +3,7 @@ title: 结构化输出 / JSON Mode 入门
 date: 2026-08-20
 description: 说明结构化输出与 JSON Mode：让模型按 schema 产出可解析 JSON，适合接程序，而不是只靠「请输出 JSON」形容词。
 tags: [AI, JSON Mode, 结构化输出, API]
+series: understanding-ai
 draft: true
 ---
 

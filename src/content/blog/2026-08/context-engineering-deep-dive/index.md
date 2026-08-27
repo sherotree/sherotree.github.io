@@ -3,6 +3,7 @@ title: 上下文工程加强版详解：窗口、裁剪、工具结果与评测
 date: 2026-08-31
 description: 加强版详解：把上下文窗口、裁剪策略、工具结果治理与评测集串成一条可执行的上下文工程实践（基于前两月高频「理解 X / Agent」题型加码）。
 tags: [AI, 上下文工程, Agent, 加强版]
+series: understanding-ai
 draft: true
 ---
 

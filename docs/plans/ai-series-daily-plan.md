@@ -223,6 +223,7 @@ Sun  机动：热点快评 / 系列复盘 / 休息囤稿
 
 - [x] 已有母稿补 `series` frontmatter（`agent-notes` / `understanding-ai` / `ai-coding-workflow`）— 2026-08-27
 - [x] 待写 51 篇骨架已生成（`draft: true`，排期自 2026-09-01 起按周模板轮转）— 2026-08-27；**暂存**于 `temp/ai-series-daily-plan/`，未进 `src/content/blog/`
+- [x] `2026-09/` 共 26 篇正文已写完（`ruanyifeng-tech-writing` + 手绘风配图 + ImageKit CDN）— 2026-08-28
 - [ ] 主站增加系列索引页或系列 tag 聚合（可选，建站层）
 - [ ] 每周末记录：哪条线阅读/搜索更好，调 Phase 2/3 比重
 

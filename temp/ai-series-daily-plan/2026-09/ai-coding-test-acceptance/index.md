@@ -13,7 +13,7 @@ draft: true
 
 测试是活的规格说明。AI 生成的测试若只断言 `toBeDefined()`，绿灯没有任何信息量；若 mock 掉整个 service，则永远测不到集成问题。我的默认假设是：**AI 测试草稿覆盖率约六成**，剩下四成边界与恶意路径要人补或二轮 prompt。
 
-下面展开具体做法。
+下面展开具体做法。可以把 acceptance checklist 贴进 PR 模板，让 AI 生成与人工验收使用同一份 Grounding 清单，避免「测过了」却没人知道测了什么。
 
 ![AI 写测试的生成与验收循环](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/test-generate-verify_DC4_ITzgB.png)
 
@@ -32,7 +32,7 @@ draft: true
 
 上面代码中，第 3 条是**失败分支**；最后一句防止「测 mock 不测逻辑」。
 
-行为清单来自产品或 issue，而不是让 AI 自己「觉得测什么」——否则容易测 trivial 路径。
+行为清单来自产品或 issue，而不是让 AI 自己「觉得测什么」——否则容易测 trivial 路径。若 issue 本身模糊，先让人写 acceptance criteria，再交给 AI 翻译为测试；Grounding 的起点是**人定的可验收行为**，不是模型的想象。
 
 ## 二、生成后必跑
 
@@ -40,9 +40,9 @@ draft: true
 npm test -- order.test.ts --coverage --collectCoverageFrom=src/services/order.ts
 ```
 
-看两件事：**是否绿**、**行覆盖率是否含分支**。AI 爱写 happy path，分支常漏。
+看两件事：**是否绿**、**行覆盖率是否含分支**。AI 爱写 happy path，分支常漏。若 coverage 工具显示某分支从未执行，把分支条件写进下一轮 prompt，而不是假设「有测试就够了」——未覆盖分支和 Grounding miss 一样，都是证据缺口。
 
-集成测若慢，至少跑相关 suite；CI 全量留给 push 前。
+集成测若慢，至少跑相关 suite；CI 全量留给 push 前。若 AI 生成的测试依赖随机种子或当前时间，验收时要显式固定 seed / mock clock，否则 flaky 会在 CI 里晚到一步爆炸——那不算 Grounded 的测试。
 
 ## 三、人工验收清单
 
@@ -80,7 +80,7 @@ it('returns ERR_OUT_OF_STOCK when quantity exceeds inventory', async () => {
 });
 ```
 
-上面好例子里，**库存、错误码、副作用** 都可核对，符合 Grounding 式可验证输出。
+上面好例子里，**库存、错误码、副作用** 都可核对，符合 Grounding 式可验证输出。写测试 prompt 时附上现有测试风格样例 `@` 一份，比口头说「跟项目风格」更 Grounded——风格也在证据里，不在形容词里。
 
 ## 五、补洞：mutation 与边界
 
@@ -91,7 +91,7 @@ AI 常漏：空输入、权限不足、超时、重复提交。我会单独 prom
 每条说明预期结果。
 ```
 
-人挑选后让 AI 补写，再跑一遍验收清单。
+人挑选后让 AI 补写，再跑一遍验收清单。第二轮 prompt 只补**清单上仍空的行**，不要重生成整套测试——否则可能把已验收通过的行为又改坏，Grounding 应增量追加证据，而不是重写全文。
 
 ## 六、何时让人补测
 
@@ -100,14 +100,16 @@ AI 常漏：空输入、权限不足、超时、重复提交。我会单独 prom
 （3）回归来自线上 bug——应用**最小复现**写一条再扩。  
 （4）性能与负载——需要基准环境，不宜全自动信任。
 
+最后一条：**测试也要 review**。AI 可能为了绿而 assert 过宽，或 snapshot 巨大 JSON——人眼扫一眼往往够发现。验收不是 trust，是 audit；把「故意弄红一条」写进团队习惯，比任何 lint 规则都更 Grounded。
+
 ## 七、与 CI 的契约
 
-生成的测试必须**本地与 CI 同命令**通过。若 AI 用了 only-local 的 path 或环境变量，验收阶段就要改。我会在 `AGENTS.md` 里写死测试命令（系列③），并在 prompt 里重复，减少「我这边能跑」式幻觉。
+生成的测试必须**本地与 CI 同命令**通过。若 AI 用了 only-local 的 path 或环境变量，验收阶段就要改。我会在 `AGENTS.md` 里写死测试命令（系列③），并在 prompt 里重复——命令也是 Grounding 证据，不能只在 chat 里存在一次。
 
- flaky 测试一律打回，不让 AI 用 `sleep` 或加大 timeout 糊弄——那是掩盖 race，不是修复。
+ flaky 测试一律打回，不让 AI 用 `sleep` 或加大 timeout 糊弄——那是掩盖 race，不是修复。测试验收的核心是：**绿灯必须代表行为正确**，而不是代表「命令 exit 0」；这一点和 Grounding 要求「引用能核对原文」一样，不可妥协，也不因赶 release 而跳过。Release 前若缩短验收，等于主动放弃 Grounding——线上回归会替你还债。
 
 ## 八、小结
 
-AI 写测试是**起草**；验收才是工程。先写行为清单，再生成，再跑 coverage，再故意弄红一条。测得不可信，比没测更危险——它会给 false confidence。Grounding 思维在这里的体现是：**每条断言都要对得上真实行为**，而不是对得上 AI 的猜测。
+AI 写测试是**起草**；验收才是工程。先写行为清单，再生成，再跑 coverage，再故意弄红一条。测得不可信，比没测更危险——它会给 false confidence。Grounding 思维在这里的体现是：**每条断言都要对得上真实行为**，而不是对得上 AI 的猜测；验收清单请贴进 PR 描述备查。
 
 （完）

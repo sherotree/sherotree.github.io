@@ -13,7 +13,7 @@ draft: true
 
 Agent 很擅长「同时改很多处」，但不擅长「同时保证很多处都对」。人类 reviewer 的认知上限也在那里：一次看五百行可能，一次看三千行就只能扫格式。拆 PR 既是给 Agent 划边界，也是给团队留可审计性。
 
-下面是我拆 PR 给 Agent 的做法。
+下面是我拆 PR 给 Agent 的做法。若你已在系列第四篇练过 `@` 收窄证据，这里只是把同一 Grounding 纪律放大到 Git 与 CI 层面——**一个 PR 就是一轮对话的证据上限**。
 
 ![一个大 PR vs 拆分小 PR 对比](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/refactor-big-pr_5bnelIwZY.png)
 
@@ -25,7 +25,7 @@ Agent 很擅长「同时改很多处」，但不擅长「同时保证很多处�
 （4）**可回滚**：生产出问题只 revert 一层。  
 （5）**并行友好**：小 PR 更容易被同事接力。
 
-经验值：单 PR **≤ 400 行有效 diff**，或 **≤ 8 个文件**（生成物、lockfile 另计）。
+经验值：单 PR **≤ 400 行有效 diff**，或 **≤ 8 个文件**（生成物、lockfile 另计）。超过时优先按**行为边界**切（例如「只迁 login 页」），而不是按时间切——按时间切容易留下半迁移状态，测试难以判断是预期中间态还是 bug。
 
 ## 二、典型拆法：堆叠 PR
 
@@ -53,7 +53,7 @@ PR2 范围：仅 src/pages/login.tsx 与 src/pages/register.tsx。
 
 上面代码中，**范围 + 禁止 + 验收** 构成 Grounding 边界；`@` hook 文件是证据。
 
-每步只开一个 Agent thread，避免它「顺手」做 PR3 的事。
+每步只开一个 Agent thread，避免它「顺手」做 PR3 的事。若 Agent 提议扩大范围，我会明确回复「本 PR 不做，记入 Issue #N」——把野心关在下一张任务卡里，而不是关在当前 diff 里。
 
 ## 四、机械步骤优先自动化
 
@@ -69,7 +69,9 @@ PR2 范围：仅 src/pages/login.tsx 与 src/pages/register.tsx。
 （1）模块边界  
 （2）是否兼容旧 API  
 （3）哪一步可以 breaking  
-（4）feature flag 要不要挂
+（4）feature flag 要不要挂  
+
+其中（3）（4）必须在 Agent 动手前由人拍板——模型会默认「一次性迁完更干净」，但你的 Grounding 边界可能是「灰度两周再删旧 API」。
 
 ## 五、分支策略
 
@@ -88,7 +90,7 @@ PR2 范围：仅 src/pages/login.tsx 与 src/pages/register.tsx。
 - 已知未迁移清单（若有）
 ```
 
-这和 Grounding 的「引用可核对」同构——reviewer 不用猜还有没有隐藏改动。
+这和 Grounding 的「引用可核对」同构——reviewer 不用猜还有没有隐藏改动。若 Agent 输出「无未迁移清单」却仍有 deprecated 引用，用 `grep` 复核比信任自然语言更 Grounded。
 
 ## 七、常见误区
 
@@ -98,14 +100,16 @@ PR2 范围：仅 src/pages/login.tsx 与 src/pages/register.tsx。
 （4）让 Agent 同时改命名和业务逻辑——失败时无法二分。  
 （5）跳过「行为不变」的中间 PR——直接大 bang 迁移。
 
+拆 PR 时我会显式写 **Non-Goals**：本 PR 不改 UI、不动数据库 schema。Agent 特别爱「顺手优化」——Non-Goals 是 Grounding 的禁止项，和规则文件里的「不改某某目录」同理，写进 PR 描述比写在 chat 里更持久。
+
 ## 八、Review 与沟通
 
-每个小 PR 的 description 我会写三行：**本 PR 做什么、不做什么、如何验证**。Reviewer 不必读整个重构 epic，只看当前阶梯。若 Agent 生成 commit message，人仍要改到与 PR 范围一致，避免 message 写「完成全量迁移」而 diff 只有一页。
+每个小 PR 的 description 我会写三行：**本 PR 做什么、不做什么、如何验证**。Reviewer 不必读整个重构 epic，只看当前阶梯——这三行就是该 PR 的 Grounding 摘要，和 Agent 任务卡同构。若 Agent 生成 commit message，人仍要改到与 PR 范围一致，避免 message 写「完成全量迁移」而 diff 只有一页。
 
-Epic 链接或 checklist 放在 Issue 里，PR 只勾一项。合并后更新 Issue，下一 PR 再开——这样 Grounding 边界在组织层面也清晰。
+Epic 链接或 checklist 放在 Issue 里，PR 只勾一项。合并后更新 Issue，下一 PR 再开——这样 Grounding 边界在组织层面也清晰。大重构最怕「组织上是一个项目、代码上是一个 PR」——拆到 Issue 层级，Agent 才跟得上人的 review 节奏。
 
 ## 九、小结
 
-大重构不是让 Agent 一次写完，而是**你设计阶梯，Agent 填每一级**。PR 越小，Grounding 越准，review 越像人能做的工作。宁可多 merge 几次，也不要一次 diff 看不完——回滚成本会教你这一点。
+大重构不是让 Agent 一次写完，而是**你设计阶梯，Agent 填每一级**。PR 越小，Grounding 越准，review 越像人能做的工作。宁可多 merge 几次，也不要一次 diff 看不完——回滚成本会教你这一点，而 Issue 上的 checklist 会帮团队记住还剩哪几级。Epic 结束时再让 Agent 做「全库 grep 旧符号」的收尾 PR，比在中间步骤一次性删光更安全。收尾 PR 同样要有 Non-Goals 与测试命令——**最后一级阶梯也要 Grounded**，不能因为是「清理」就裸 diff。清理 PR 删的是用户可见行为的上游依赖，更要用 grep 与测试证明「无残留引用」。
 
 （完）

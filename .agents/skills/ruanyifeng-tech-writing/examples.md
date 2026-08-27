@@ -13,7 +13,7 @@ XXX 是……（一句话）。
 
 下面用尽量直白的方式，说明 XXX 的设计思路和基本用法。
 
-![XXX 基本流程示意](./images/xxx-overview.png)
+![XXX 基本流程示意](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/xxx-overview.png)
 
 ## 一、为什么需要 XXX
 
@@ -29,7 +29,7 @@ XXX 是……（一句话）。
 
 （A）（B）（C）……逐步说明。
 
-![XXX 分步流程](./images/xxx-steps.png)
+![XXX 分步流程](https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/xxx-steps.png)
 
 ## 四、关键细节
 
@@ -133,8 +133,27 @@ Host: api.example.com
 |----------|----------|----------|
 | 本站工具上传区 | 打开工具 URL → 自动截图 → 写入 `images/` | 写「待补截图」 |
 | SEO「图书馆」隐喻氛围图 | Unsplash/Pexels 检索，合适再下载 | 百度搜图乱下 |
-| 抓取→索引→排序流程 | 手绘风示意图（Mermaid 或 AI） | 光滑商务 PPT 风 / 不相关风景照 |
-| 图库无合适概念图 | 手绘风 AI 示意 | 爬竞品官网 UI；正文写长图注 |
+| 抓取→索引→排序流程 | **AI 手绘风**（`GenerateImage` + 系列锚点 reference）→ 上传 ImageKit | Mermaid 默认灰盒导出 / 光滑 PPT 风 |
+| Grounding / 三层排查类对比图 | 纸感铅笔线、中文标签、简单手绘图标；参考 `grounding-contrast`、`tool-fail-three-layers` | 扁平流程图工具默认主题 |
+| 图库无合适概念图 | 手绘风 AI 示意 → ImageKit | 爬竞品官网 UI；正文写长图注 |
+
+## 手绘示意生成示例（流程 / 架构类）
+
+```text
+工具：Cursor GenerateImage
+比例：16:9
+reference：系列锚点图（如 agent-tool-failure-three-layers 的 ImageKit PNG）
+
+prompt 要点：
+Hand-drawn pencil sketch on textured off-white paper.
+Title in Chinese: 「Grounding 最小流水线」.
+Six hand-drawn boxes left to right: 用户问题 → 检索 → 装入上下文 → 约束生成 → 核对 → 带引用输出.
+Charcoal wobbly lines, sparse Chinese labels, no Mermaid flat look.
+
+落盘：./images/grounding-pipeline.png
+上传：python3 .agents/skills/imagekit-upload/scripts/upload.py ./images/grounding-pipeline.png /blog/2026/09 --compress
+正文：https://ik.imagekit.io/4pjac7gmxh/blog/2026/09/grounding-pipeline_xxx.png
+```
 
 ## 代码写法对照
 
@@ -184,4 +203,4 @@ Host: api.example.com
 3. 第一个术语是否在出现时用括号标了英文？  
 4. 是否出现「赋能」「抓手」「闭环」等空话？有则删。  
 5. 是否有真实图片、且没有「上图是 / 图片说明」？该动手处有没有短代码？  
-6. 工具步骤是否已自动截图？主题图是否优先走了 Unsplash/Pexels？
+6. 工具步骤是否已自动截图？流程/架构类是否 AI 手绘风（非 Mermaid 默认）？发布稿是否 ImageKit CDN？

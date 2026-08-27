@@ -3,6 +3,7 @@ name: ruanyifeng-tech-writing
 description: >-
   Write Chinese technical articles in a clear, plain style inspired by
   Ruan Yifeng's popular tutorials (短段、场景类比、层层拆解、必要配图与代码块).
+  Diagrams use unified hand-drawn pencil style + ImageKit CDN for blog posts.
   Use when writing CSDN/掘金/博客技术文、中文工具教程、科普向开发者文章, or when the
   user asks for 阮一峰文风 / 通俗技术写作 / 易懂中文教程.
 ---
@@ -84,10 +85,10 @@ description: >-
 | 场景                         | 配什么           | 获取路径（见 6.2）                           |
 | ---------------------------- | ---------------- | -------------------------------------------- |
 | 自己的工具页步骤             | 真实界面截图     | **A. 自动截图**（必须）                      |
-| 多步骤流程 / 协议交互        | 流程图、时序示意 | **C. 自绘 / Mermaid**（优先）或 AI           |
-| 结构关系（模块、目录、架构） | 简图             | **C**                                        |
+| 多步骤流程 / 协议交互        | 流程图、时序示意 | **D. AI 手绘示意**（默认，见 6.5）           |
+| 结构关系（模块、目录、架构） | 简图             | **D**                                        |
 | 概念氛围 / 主题插图（非 UI） | 照片或插画       | **B. Unsplash / Pexels** → 不行再 **C/D**    |
-| 前后对比（转换、优化）       | before / after   | 工具页用 **A**；否则 **C/D**                 |
+| 前后对比（转换、优化）       | before / after   | 工具页用 **A**；否则 **D**                   |
 | 第三方产品 UI（如 Cursor）   | 仅在可合法取得时 | 优先官方素材或自有环境截图；不要乱爬他人站点 |
 
 #### 6.2 配图生成规则（按类型分流，写文时执行）
@@ -113,34 +114,36 @@ description: >-
 1. 用英文关键词检索 Unsplash 或 Pexels（API 或官方站点均可）。
 2. **合适才用**：画面与段落主题相关、构图干净、无大量无关文字、可商用许可清晰。
 3. 下载到 `images/` 并嵌入正文。
-4. 不合适（风格违和、太满、有水印、答非所问）→ 不要勉强下载，转入 **C 或 D**。
+4. 不合适（风格违和、太满、有水印、答非所问）→ 不要勉强下载，转入 **D**。
 
 禁止：从百度图片、任意博客、商业官网批量爬图冒充配图。
 
-##### C. 自绘示意图 / Mermaid → 导出
+##### C. Mermaid / 矢量草稿（禁止默认主题直接入稿）
 
-适用于：流程、时序、架构、对比结构——这类图**优先于**图库照片。
+**流程 / 架构 / 对比类示意图，默认不用 Mermaid 成品图。** Mermaid 仅可在本地快速理清结构；若导出 PNG，不得使用默认 `neutral` / 灰盒直箭头主题直接嵌入正文——与系列视觉不统一。
 
-1. 在文中或临时文件写 Mermaid（`flowchart` / `sequenceDiagram` 等）。
-2. 导出为 PNG/SVG，存入 `images/`。
-3. 也可用简洁手绘风 SVG/HTML 导出；**示意图默认用手绘风格**（见 6.5），少字、一张一个信息。
+若因环境限制无法 AI 出图，才允许手写风 SVG；仍须满足 6.5，且不得呈扁平商务流程图观感。
 
-##### D. AI 生成配图
+##### D. AI 手绘示意图（流程 / 架构 / 对比的默认路径）
 
-适用于：B 找不到合适图、又需要非 UI 的示意/插画时。
+适用于：流程、时序、架构、对比、心智模型——**本仓库博客系列的统一风格**。
 
-1. 用图像生成工具出图；**流程/结构类示意优先手绘风**（铅笔线、纸感、轻微不齐），避免光滑扁平商业 PPT 风。
-2. 保存到 `images/` 并嵌入正文。
-3. **不要**用 AI 图假装「本工具真实界面」；真实 UI 只能走 **A**。
+1. 用图像生成工具（如 Cursor `GenerateImage`）出图；**必须**指定手绘风（见 6.5）。
+2. 优先传入系列风格锚点作参考（见 6.5「风格锚点」），保证纸感、铅笔线、中文标签一致。
+3. 保存到文章同级 `images/`，文件名可读：`grounding-contrast.png`。
+4. 发布稿上传 ImageKit（见 6.6），正文嵌入 CDN URL；囤稿阶段可暂用 `./images/...`。
+5. **不要**用 AI 图假装「本工具真实界面」；真实 UI 只能走 **A**。
+6. **禁止**用 Mermaid 默认导出、光滑扁平 PPT 风、紫蓝科技感堆料替代本路径。
 
 ##### 决策顺序（摘要）
 
 ```text
 需要配图
   ├─ 自己的工具 UI / 操作步骤     → A 自动截图（必须成功嵌入）
-  ├─ 流程 / 架构 / 时序           → C Mermaid/自绘 → 不够再 D
+  ├─ 流程 / 架构 / 时序 / 对比    → D AI 手绘示意（默认；见 6.5）
+  │                                  └─ 仅草稿可用 Mermaid 理清结构，不得默认主题入稿
   └─ 主题插图 / 氛围 / 抽象隐喻   → B Unsplash/Pexels
-                                      └─ 无合适 → C 或 D
+                                      └─ 无合适 → D 手绘 AI 示意
 ```
 
 #### 6.3 怎么写进 Markdown
@@ -155,7 +158,7 @@ description: >-
 
 规则：
 
-- 图片文件与 Markdown **同时交付**；路径用文章相对路径 `./images/...`
+- 图片文件与 Markdown **同时交付**；囤稿用 `./images/...`，发布稿用 ImageKit CDN URL（见 6.6）
 - `alt` 写清画面（无障碍与备份用），读者通常看不见
 - **禁止**图下再写：`上图是……` / `下面这张图……` / `（图片说明：……）` / 图库署名或来源说明
 
@@ -167,21 +170,56 @@ description: >-
 - 不要爬取未授权站点图片
 - 截图若含隐私/密钥，先打码
 - 图库图不要冒充产品截图；AI 图不要冒充实机界面
-- 示意图不要用光滑渐变、玻璃拟态、紫蓝科技感堆料；优先手绘纸感
+- 示意图不要用 Mermaid 默认灰盒主题、光滑渐变、玻璃拟态、紫蓝科技感堆料
+- 流程 / 架构类**必须**走 6.5 手绘风，与系列已有配图保持一致
 
-#### 6.5 示意图视觉默认：手绘风
+#### 6.5 示意图视觉标准：手绘风（系列统一）
 
-流程、架构、对比、心智模型类配图，默认采用**手绘风格**，而不是扁平 UI / 商务 PPT 风。
+流程、架构、对比、心智模型类配图，**一律**采用本仓库已落地的**铅笔手绘风**，而不是 Mermaid 默认导出、扁平 UI 或商务 PPT 风。
 
-特征：
+**风格锚点（生成时作 reference，对齐用）：**
 
-- 铅笔或马克笔描边，线条可略不齐
-- 米白或浅纸色底，少渐变
-- 方框、箭头用手绘圆角；文字可像手写印刷体，保持可读
-- 信息量少：一图一个观点，中英文短标签即可
+- Agent 工程笔记：`agent-tool-failure-three-layers` 配图（三层排查、纸感铅笔线）
+- Grounding 对比 / 流水线：`grounding-contrast`、`grounding-pipeline`（双栏对比、编号步骤流）
 
-适用：Crawl→Index→Rank、Tab/Inline/Agent 分层、执行顺序等。  
+**必须满足的特征：**
+
+- 铅笔或炭笔描边，线条略不齐；米白 / 浅纸色底（如 `#faf7f2`），少渐变、无玻璃拟态
+- 方框、箭头、分区用手绘圆角；中文标签像手写印刷体，短句、可读
+- 可配简单手绘图标（大脑、文档、放大镜、对话气泡等），一图一个观点
+- 横版为主，常用 `16:9`；信息量少，避免一图塞满术语表
+
+**生成提示词要点（给 `GenerateImage` 等）：**
+
+```text
+Hand-drawn pencil sketch on textured off-white paper. Chinese labels in handwriting-style
+print. Charcoal lines slightly wobbly. Warm paper texture. Sparse text. No purple gradients.
+No glossy UI. No flat Mermaid flowchart look. Landscape 16:9.
+```
+
+**禁止：**
+
+- Mermaid CLI 默认主题 PNG 直接入稿（灰盒 + 直箭头 + 系统 sans-serif）
+- 与系列锚点图风格明显不一致的「换一套视觉语言」
+
+适用：Crawl→Index→Rank、Tab/Inline/Agent 分层、Grounding 流水线、工具失败三层等。  
 不适用：真实工具截图（仍走 A）、照片类氛围图（仍走 B）。
+
+#### 6.6 博客配图发布：ImageKit
+
+本仓库已发布文章的正文配图，统一走 ImageKit CDN（与 `agent-tool-failure-three-layers` 等稿一致）。
+
+1. 手绘示意或截图落盘到文章 `images/`。
+2. 用 `imagekit-upload` skill 上传：
+
+```bash
+python3 .agents/skills/imagekit-upload/scripts/upload.py \
+  ./images/grounding-contrast.png /blog/2026/09 --compress --file-name grounding-contrast.png
+```
+
+3. 正文嵌入返回的 `url`（`https://ik.imagekit.io/4pjac7gmxh/...`），不要只留本地相对路径就当作发布完成。
+4. 文件夹按文章 `date` 的年月：`/blog/{YYYY}/{MM}/`。
+5. 博客大图默认加 `--compress`（`w-1600,h-1600,c-at_max,q-82`）。
 
 ### 7. 代码块（其文高频，按需出现）
 
@@ -255,12 +293,14 @@ description: >-
 - [ ] 段落是否偏短、一句一意
 - [ ] 配图数量达标；每图有真实文件 + 简洁 alt；无「上图是 / 图片说明」
 - [ ] 工具页步骤已自动截图嵌入（无待补占位）
-- [ ] 主题插图已走 Unsplash/Pexels，无合适再用 Mermaid/AI
-- [ ] 流程/架构类优先 Mermaid 自绘，而非硬塞图库照片
+- [ ] 主题插图已走 Unsplash/Pexels，无合适再 AI 手绘
+- [ ] 流程/架构/对比类已用 D 手绘风（非 Mermaid 默认导出）
+- [ ] 手绘风是否与系列锚点一致（纸感、铅笔线、中文标签）
+- [ ] 发布稿配图已上传 ImageKit 并改用 CDN URL
 - [ ] 代码：该出现示例的地方是否有短代码块
 - [ ] 代码是否「先说明 → 代码块 → 上面代码中……」
 - [ ] 结尾是否收束，有无（完）
-- [ ] 无抄袭、无冒充、软广不超过一处、无未授权爬图
+- [ ] 无抄袭、无冒充、软广不超过一处、未授权爬图
 ```
 
 保存到仓库时：Markdown 与 `images/` 内真实文件一并交付，不得只交纯文字墙或假图片路径。

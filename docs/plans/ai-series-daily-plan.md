@@ -4,7 +4,7 @@
 > 关联：[content-plan-3months.md](./content-plan-3months.md)、[ai-dev-digest-weekly.md](./ai-dev-digest-weekly.md)  
 > 节奏：**日更**（7 天/周）；三条 AI 系列各 **20 篇**（可调 10–30），合计约 **62 篇**（含已有母稿）  
 > 文风：`ruanyifeng-tech-writing`  
-> 配图：流程 / 架构 / 对比类统一 **AI 手绘风**（纸感铅笔线）+ ImageKit CDN；见 skill 6.5，禁止 Mermaid 默认主题入稿  
+> 配图：流程 / 架构 / 对比类统一 **牛皮纸手账风**（虚线卡片 + 淡彩）+ ImageKit CDN；见 skill 6.5，禁止 Mermaid 默认主题入稿  
 > **硬约束**：与主计划一致——零软广；囤稿 `draft: true`；按周公开，勿一次性暴露全部存稿
 
 ---

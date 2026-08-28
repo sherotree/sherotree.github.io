@@ -173,34 +173,37 @@ description: >-
 - 示意图不要用 Mermaid 默认灰盒主题、光滑渐变、玻璃拟态、紫蓝科技感堆料
 - 流程 / 架构类**必须**走 6.5 手绘风，与系列已有配图保持一致
 
-#### 6.5 示意图视觉标准：手绘风（系列统一）
+#### 6.5 示意图视觉标准：牛皮纸手账风（系列统一）
 
-流程、架构、对比、心智模型类配图，**一律**采用本仓库已落地的**铅笔手绘风**，而不是 Mermaid 默认导出、扁平 UI 或商务 PPT 风。
+流程、架构、对比、心智模型类配图，**一律**采用本仓库风格锚点的**牛皮纸手账风**，而不是 Mermaid 默认导出、扁平 UI 或商务 PPT 风。
 
 **风格锚点（生成时作 reference，对齐用）：**
 
-- Agent 工程笔记：`agent-tool-failure-three-layers` 配图（三层排查、纸感铅笔线）
-- Grounding 对比 / 流水线：`grounding-contrast`、`grounding-pipeline`（双栏对比、编号步骤流）
+- 主锚点：`agent-tool-failure-three-layers` 配图（三层排查）— CDN 见该文 ImageKit URL；本地可参考 `/tmp/style-anchor.png`
+- 辅参考：`grounding-contrast`、`grounding-pipeline`（双栏对比、编号步骤流；后续新图以主锚点为准）
 
 **必须满足的特征：**
 
-- 铅笔或炭笔描边，线条略不齐；米白 / 浅纸色底（如 `#faf7f2`），少渐变、无玻璃拟态
-- 方框、箭头、分区用手绘圆角；中文标签像手写印刷体，短句、可读
-- 可配简单手绘图标（大脑、文档、放大镜、对话气泡等），一图一个观点
-- 横版为主，常用 `16:9`；信息量少，避免一图塞满术语表
+- **背景**：米色 / 牛皮纸（kraft paper / cream）纹理底，非纯白、非紫蓝渐变
+- **字体**：黑色手写马克笔体（handwritten marker），中文短标签、可读
+- **线条与填色**：铅笔素描描边（略不齐）+ 图标 / 卡片内**淡彩水彩**填色（半透明、可溢出轮廓一点）
+- **卡片**：圆角 + **虚线边框**（dashed-border cards），不用厚重立体块
+- **装饰**：少量手绘箭头、星星、爱心 doodle，点缀边角，勿堆满
+- 横版为主，常用 `16:9`；一图一个观点，信息量克制
 
 **生成提示词要点（给 `GenerateImage` 等）：**
 
 ```text
-Hand-drawn pencil sketch on textured off-white paper. Chinese labels in handwriting-style
-print. Charcoal lines slightly wobbly. Warm paper texture. Sparse text. No purple gradients.
-No glossy UI. No flat Mermaid flowchart look. Landscape 16:9.
+Warm kraft paper / cream textured background. Black handwritten marker Chinese labels.
+Pencil sketch outlines + soft watercolor fills on icons and cards. Rounded cards with
+dashed borders. Sparse doodle arrows, stars, hearts in margins. Landscape 16:9.
+No purple neon, no glossy UI, no flat Mermaid boxes, no photorealism.
 ```
 
 **禁止：**
 
 - Mermaid CLI 默认主题 PNG 直接入稿（灰盒 + 直箭头 + 系统 sans-serif）
-- 与系列锚点图风格明显不一致的「换一套视觉语言」
+- 只有灰铅笔、无淡彩 / 无虚线卡片、与主锚点明显不一致的「换一套视觉语言」
 
 适用：Crawl→Index→Rank、Tab/Inline/Agent 分层、Grounding 流水线、工具失败三层等。  
 不适用：真实工具截图（仍走 A）、照片类氛围图（仍走 B）。
@@ -294,8 +297,8 @@ python3 .agents/skills/imagekit-upload/scripts/upload.py \
 - [ ] 配图数量达标；每图有真实文件 + 简洁 alt；无「上图是 / 图片说明」
 - [ ] 工具页步骤已自动截图嵌入（无待补占位）
 - [ ] 主题插图已走 Unsplash/Pexels，无合适再 AI 手绘
-- [ ] 流程/架构/对比类已用 D 手绘风（非 Mermaid 默认导出）
-- [ ] 手绘风是否与系列锚点一致（纸感、铅笔线、中文标签）
+- [ ] 流程/架构/对比类已用 D 牛皮纸手账风（虚线卡片+淡彩；非 Mermaid 默认）
+- [ ] 手绘风是否与主锚点一致（kraft 底、手写中文、doodle 装饰克制）
 - [ ] 发布稿配图已上传 ImageKit 并改用 CDN URL
 - [ ] 代码：该出现示例的地方是否有短代码块
 - [ ] 代码是否「先说明 → 代码块 → 上面代码中……」

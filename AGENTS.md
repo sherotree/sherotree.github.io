@@ -17,5 +17,5 @@
 3. **发布闸门**：未到发布周的稿保持 `draft: true`（不进站点列表与详情）；当周要发的改 `draft: false` 再 push `main`，并同步六站。勿一次性把囤稿全部公开。
 4. 专栏取值：`browser-graphics`（浏览器里的图形）、`agent-notes`（Agent 工程笔记）、`understanding-ai`（理解 AI）、`ai-coding-workflow`（AI 编程效率）。
 5. 站点文案为中文；导流纪律以 `docs/plans/content-plan-3months.md` 为准（分阶段）。
-6. **配图风格**：流程 / 架构 / 对比类示意图统一 **AI 手绘风**（纸感铅笔线、中文标签）；规范见 `.agents/skills/ruanyifeng-tech-writing/SKILL.md` 6.5。禁止 Mermaid 默认主题直接入稿。发布稿配图上传 ImageKit（`.agents/skills/imagekit-upload/SKILL.md`），正文用 CDN URL。
+6. **配图风格**：流程 / 架构 / 对比类示意图统一 **牛皮纸手账风**（米色底、虚线圆角卡片、铅笔线+淡彩、手写中文、少量星星/爱心 doodle）；主锚点为 `agent-tool-failure-three-layers` 配图。规范见 `.agents/skills/ruanyifeng-tech-writing/SKILL.md` 6.5。禁止 Mermaid 默认主题直接入稿。发布稿配图上传 ImageKit（`.agents/skills/imagekit-upload/SKILL.md`），正文用 CDN URL。
 7. 本地验证：`npm run build`。

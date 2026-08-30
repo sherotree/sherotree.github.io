@@ -18,4 +18,5 @@
 4. 专栏取值：`browser-graphics`（浏览器里的图形）、`agent-notes`（Agent 工程笔记）、`understanding-ai`（理解 AI）、`ai-coding-workflow`（AI 编程效率）。
 5. 站点文案为中文；导流纪律以 `docs/plans/content-plan-3months.md` 为准（分阶段）。
 6. **配图风格**：流程 / 架构 / 对比类示意图统一 **牛皮纸手账风**（米色底、虚线圆角卡片、铅笔线+淡彩、手写中文、少量星星/爱心 doodle）；主锚点为 `agent-tool-failure-three-layers` 配图。规范见 `.agents/skills/ruanyifeng-tech-writing/SKILL.md` 6.5。禁止 Mermaid 默认主题直接入稿。发布稿配图上传 ImageKit（`.agents/skills/imagekit-upload/SKILL.md`），正文用 CDN URL。
-7. 本地验证：`npm run build`。
+7. **CSDN 分发**：向 CSDN 发布本仓库文章时，一律**保留原文图片链接**（发布命令带 `--no-rehost-images`），不要重传图片到 CSDN CDN；发布方式默认私密草稿，除非用户明确要求公开发布。规则细则见 `.agents/skills/csdn/SKILL.md`。
+8. 本地验证：`npm run build`。

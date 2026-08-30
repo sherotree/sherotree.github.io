@@ -32,7 +32,7 @@ WebP 是 Google 推的图片格式，支持有损、无损和动画。对网站�
 - 微信、钉钉直接发图
 - 邮件正文插图给不确定环境的收件人
 
-**收到 WebP 要插 PPT？** 先 [WebP 转 JPG](https://www.uwarp.design/webp-to-jpg) 或 [WebP 转 PNG](https://www.uwarp.design/webp-to-png)，再插入 Office。
+**收到 WebP 要插 PPT？** 先转回 JPG 或 PNG，再插入 Office。
 
 ---
 
@@ -98,15 +98,6 @@ iOS 14+、macOS Big Sur+ 原生支持较好。更老系统用 `<picture>` 回退
 少量图用在线工具；整站素材可用 `cwebp` 命令行或构建脚本批量处理。在线工具适合快速验证质量再写进流水线。
 
 ---
-
-## 六、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| JPG 转 WebP | https://www.uwarp.design/jpg-to-webp?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=webp-frontend |
-| PNG 转 WebP | https://www.uwarp.design/png-to-webp?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=webp-frontend |
-| WebP 转 JPG | https://www.uwarp.design/webp-to-jpg?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=webp-frontend |
-| WebP 转 PNG | https://www.uwarp.design/webp-to-png?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=webp-frontend |
 
 网站性能优化用 WebP；人际协作发图仍用 JPG/PNG。两套场景分开，就不容易踩坑。
 

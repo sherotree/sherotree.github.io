@@ -40,7 +40,7 @@ GIF 的代价是体积和画质。教程动图建议 **宽度 640～800px、时�
 
 ![选段与预览](https://ik.imagekit.io/4pjac7gmxh/blog/04-video-to-gif-result_IvjDJ054W.png)
 
-iPhone 录屏若是 MOV，可用 [MOV 转 GIF](https://www.uwarp.design/mov-to-gif?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=video-gif)，步骤相同。
+iPhone 录屏若是 MOV 文件，转换步骤相同。
 
 ### 2.2 控制体积：帧率与宽度
 
@@ -50,11 +50,11 @@ iPhone 录屏若是 MOV，可用 [MOV 转 GIF](https://www.uwarp.design/mov-to-g
 - **帧率**：10～15fps 通常够用，再高体积涨得快
 - **时长**：能短则短，循环 1～2 次即可
 
-若 GIF 仍太大，再用 [GIF 压缩](https://www.uwarp.design/gif-compressor) 或 [改尺寸](https://www.uwarp.design/gif-resizer) 处理。
+若 GIF 仍太大，再对 GIF 做压缩或改尺寸处理。
 
 ### 2.3 裁掉多余帧
 
-已经转出 GIF 但头尾多余？用 [GIF 裁剪](https://www.uwarp.design/gif-cutter) 精修时间范围。
+已经转出 GIF 但头尾多余？用 GIF 裁剪功能精修时间范围。
 
 ![GIF 裁剪工具](https://ik.imagekit.io/4pjac7gmxh/blog/04-gif-cutter-upload_M5cDeCCfr.png)
 
@@ -105,15 +105,6 @@ GIF 只有 256 色，录屏渐变区域容易有色带。可缩短时长、缩�
 视频转 GIF 在浏览器本地解码处理，适合不想把内部录屏上传到陌生服务器的场景。超大文件可能受浏览器内存限制，建议录屏片段先剪短再上传。
 
 ---
-
-## 五、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| 视频转 GIF | https://www.uwarp.design/video-to-gif?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=video-gif |
-| MOV 转 GIF | https://www.uwarp.design/mov-to-gif?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=video-gif |
-| GIF 裁剪 | https://www.uwarp.design/gif-cutter?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=video-gif |
-| GIF 加字幕 | https://www.uwarp.design/add-caption-to-gif?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=video-gif |
 
 录屏 → 选段 → 控参数 → 必要时加字幕，教程 GIF 在浏览器里就能做完。
 

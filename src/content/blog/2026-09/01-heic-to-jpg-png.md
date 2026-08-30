@@ -126,19 +126,7 @@ WebP 适合**你自己管的前端页面**，能省流量。但交作业、发�
 
 ### 5.5 上传后提示解码失败？
 
-常见原因：（1）文件损坏或不是标准 HEIC；（2）超过 50 MB 限制；（3）Live Photo 包了一层特殊结构。可以换一张从相册「导出原图」的文件重试；若是 Live Photo，需要先导出静态帧（工具站也有 [Live Photo 转照片](https://www.uwarp.design/livephoto-to-photo) 页面）。
-
----
-
-## 六、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| HEIC 转 JPG | https://www.uwarp.design/heic-to-jpg?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=heic-jpg |
-| HEIC 转 PNG | https://www.uwarp.design/heic-to-png?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=heic-jpg |
-| HEIF 转 JPG（同类格式） | https://www.uwarp.design/heif-to-jpg |
-
-也可以用在线工具直接做，不必记命令。上面页面支持拖拽上传、本地解码、预览后下载。
+常见原因：（1）文件损坏或不是标准 HEIC；（2）超过 50 MB 限制；（3）Live Photo 包了一层特殊结构。可以换一张从相册「导出原图」的文件重试；若是 Live Photo，需要先在相册里导出静态帧再转换。
 
 ---
 

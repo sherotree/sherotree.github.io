@@ -79,13 +79,6 @@ PSD 是 Adobe Photoshop 的专有格式，里面可能有 dozens 个图层、智
 
 ---
 
-## 六、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| PSD 转 JPG | https://www.uwarp.design/psd-to-jpg?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=psd-export |
-| PSD 转 PNG | https://www.uwarp.design/psd-to-png?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=psd-export |
-
 没装 PS 也能把 PSD 变成通用图片；正式交付仍找设计师原文件导出最稳。
 
 （完）

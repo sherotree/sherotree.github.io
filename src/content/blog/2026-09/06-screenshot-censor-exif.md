@@ -30,7 +30,7 @@ EXIF 是另一回事：画面上看不出，但「另存为」或元数据工具
 
 ![打码后预览](https://ik.imagekit.io/4pjac7gmxh/blog/06-censor-blur-result_4HXLMW1WO.png)
 
-需要更自由涂抹时，可用 [图片涂鸦打码](https://www.uwarp.design/image-censor?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=censor-exif)，手指或鼠标涂哪遮哪。
+需要更自由涂抹时，可用涂鸦式打码功能，手指或鼠标涂哪遮哪。
 
 打码要点：
 
@@ -44,7 +44,7 @@ EXIF 是另一回事：画面上看不出，但「另存为」或元数据工具
 
 ### 3.1 查看照片里有什么元数据
 
-上传前用 [查看图片元数据](https://www.uwarp.design/view-metadata?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=censor-exif) 看一眼。
+上传前先用图片元数据查看功能看一眼。
 
 ![查看元数据工具](https://ik.imagekit.io/4pjac7gmxh/blog/06-view-metadata-upload_ttHfUYgNg.png)
 
@@ -96,15 +96,6 @@ EXIF 是另一回事：画面上看不出，但「另存为」或元数据工具
 本文针对静态图。视频需用视频编辑工具或专用打码功能，不在此展开。
 
 ---
-
-## 六、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| 模糊 / 马赛克打码 | https://www.uwarp.design/censor-photo-blur-pixelate?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=censor-exif |
-| 涂鸦打码 | https://www.uwarp.design/image-censor?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=censor-exif |
-| 查看元数据 | https://www.uwarp.design/view-metadata?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=censor-exif |
-| 去除 EXIF | https://www.uwarp.design/remove-exif-data?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=censor-exif |
 
 发群前：**挡住该挡的像素，删掉该删的元数据**，比事后撤回省事得多。
 

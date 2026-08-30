@@ -20,13 +20,13 @@ SVG 是矢量：放大不糊，由路径和公式描述。PNG/JPG 是栅格：�
 
 ## 二、导出前先预览 SVG
 
-上传前用 [SVG 查看器](https://www.uwarp.design/svg-viewer?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=svg-raster) 打开文件，确认路径、留白、颜色是否符合预期。
+上传前先用 SVG 查看器打开文件，确认路径、留白、颜色是否符合预期。
 
 ![SVG 查看器上传](https://ik.imagekit.io/4pjac7gmxh/blog/08-svg-viewer-upload_IyXAQatUd.png)
 
 ![SVG 预览效果](https://ik.imagekit.io/4pjac7gmxh/blog/08-svg-viewer-result_1cEMk4tI5.png)
 
-有些 SVG 自带 `viewBox` 很大但图形很小，导出前可用 [调整 SVG 尺寸](https://www.uwarp.design/resize-svg) 规范化画布，避免导出一片留白。
+有些 SVG 自带 `viewBox` 很大但图形很小，导出前可先调整 SVG 尺寸、规范化画布，避免导出一片留白。
 
 ---
 
@@ -40,12 +40,12 @@ SVG 是矢量：放大不糊，由路径和公式描述。PNG/JPG 是栅格：�
 
 **倍率建议：**
 
-| 用途 | 参考宽度 |
-|------|----------|
-| 网页 `@1x` 图标 24px | 导出 24～48px |
-| Retina `@2x` | 设计稿尺寸 × 2 |
-| PPT / 文档插图 | 400～800px |
-| App 商店图 | 按平台规范表 |
+| 用途                 | 参考宽度       |
+| -------------------- | -------------- |
+| 网页 `@1x` 图标 24px | 导出 24～48px  |
+| Retina `@2x`         | 设计稿尺寸 × 2 |
+| PPT / 文档插图       | 400～800px     |
+| App 商店图           | 按平台规范表   |
 
 图标设计稿 24×24，给 Retina 屏至少导出 **48×48**；再小放大就会糊。
 
@@ -92,15 +92,6 @@ inkscape icon.svg --export-type=png --export-width=96 -o icon@2x.png
 文字转路径（outline）再导出最稳；否则依赖系统字体，换电脑字形可能变。
 
 ---
-
-## 七、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| SVG 转 PNG | https://www.uwarp.design/svg-to-png?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=svg-raster |
-| SVG 转 JPG | https://www.uwarp.design/svg-to-jpg?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=svg-raster |
-| SVG 查看器 | https://www.uwarp.design/svg-viewer?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=svg-raster |
-| 调整 SVG 尺寸 | https://www.uwarp.design/resize-svg?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=svg-raster |
 
 记住：**先预览、再定 2x/3x 宽度、最后选 PNG 还是 JPG**，图标导出就不容易糊。
 

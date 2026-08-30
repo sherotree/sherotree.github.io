@@ -34,7 +34,7 @@
 - 中间留 8～16px 白缝，打印时也不粘在一起
 - 导出 PNG 保留 UI 锐度；发邮件可再转 JPG 压体积
 
-若两张图比例差很多，先各自 [改尺寸](https://www.uwarp.design/resize-image) 到相同宽度再拼。
+若两张图比例差很多，先各自把尺寸调到相同宽度再拼。
 
 ---
 
@@ -50,9 +50,9 @@
 
 ## 四、叠图与水印
 
-要在截图上叠 Logo、箭头说明？用 [图片叠加](https://www.uwarp.design/overlay-images?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=merge-images)，调整上层透明度与位置。
+要在截图上叠 Logo、箭头说明？可用图片叠加功能，调整上层透明度与位置。
 
-两张 PNG 都有透明区域时，用 [合并 PNG](https://www.uwarp.design/merge-png) 保留 Alpha，适合图标、贴纸合成。
+两张 PNG 都有透明区域时，用合并 PNG 类工具保留 Alpha，适合图标、贴纸合成。
 
 ---
 
@@ -64,7 +64,7 @@
 
 ### 5.2 拼完太大发不出去？
 
-拼好后 [压缩图片](https://www.uwarp.design/jpeg-compressor-image-converter) 或转 JPG。文档内展示宽度 1200px 往往足够，不必保留 4K 原拼接。
+拼好后压缩图片或转 JPG。文档内展示宽度 1200px 往往足够，不必保留 4K 原拼接。
 
 ### 5.3 两张图颜色不一致？
 
@@ -76,18 +76,9 @@
 
 ### 5.5 能拼 GIF 吗？
 
-GIF 合并有专门工具（如 [GIF 合并](https://www.uwarp.design/gif-combiner)），与静态图合并不同，别混用入口。
+GIF 合并有专门工具，与静态图合并不同，别混用入口。
 
 ---
-
-## 六、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| 两张图合并（横/竖） | https://www.uwarp.design/merge-images?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=merge-images |
-| 多图宫格组合 | https://www.uwarp.design/combine-maker?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=merge-images |
-| 图片叠加 | https://www.uwarp.design/overlay-images?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=merge-images |
-| 合并 PNG（保留透明） | https://www.uwarp.design/merge-png?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=merge-images |
 
 对比图、PRD 附图：**先对齐尺寸，再拼，最后按需压缩**，比开 PS 快得多。
 

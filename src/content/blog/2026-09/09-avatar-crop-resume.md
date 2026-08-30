@@ -14,19 +14,19 @@
 
 ![常见头像尺寸参考](https://ik.imagekit.io/4pjac7gmxh/blog/09-avatar-sizes_Nwafg0kcH.png)
 
-| 场景 | 常见尺寸 | 说明 |
-|------|----------|------|
-| 微信头像 | 400×400 | 方形，建议 < 2MB |
-| 简历证件照（1 寸） | 295×413 px | 约 2.5×3.5 cm @300dpi |
-| 简历证件照（2 寸） | 413×579 px | 约 3.5×4.9 cm |
-| 网站个人头像 | 256～512 方形 | 圆形展示常见 |
-| linkedin / 招聘 App | 400×400 或 800×800 | 以平台提示为准 |
+| 场景                | 常见尺寸           | 说明                  |
+| ------------------- | ------------------ | --------------------- |
+| 微信头像            | 400×400            | 方形，建议 < 2MB      |
+| 简历证件照（1 寸）  | 295×413 px         | 约 2.5×3.5 cm @300dpi |
+| 简历证件照（2 寸）  | 413×579 px         | 约 3.5×4.9 cm         |
+| 网站个人头像        | 256～512 方形      | 圆形展示常见          |
+| linkedin / 招聘 App | 400×400 或 800×800 | 以平台提示为准        |
 
 ---
 
 ## 二、第一步：裁成方形
 
-打开 [方形裁剪](https://www.uwarp.design/square-crop?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=avatar-crop) 或 [头像裁剪器](https://www.uwarp.design/pfp-cropper?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=avatar-crop)，上传照片，拖动取景框对准脸部，导出正方形。
+打开 [头像裁剪器](https://www.uwarp.design/pfp-cropper?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=avatar-crop)，上传照片，拖动取景框对准脸部，导出正方形。
 
 ![头像裁剪器上传](https://ik.imagekit.io/4pjac7gmxh/blog/09-pfp-cropper-upload_FrvkkGvKg.png)
 
@@ -50,7 +50,7 @@
 
 ## 四、证件照与简历专用
 
-部分报名系统要固定比例竖图。可用 [证件照 / 简历照片](https://www.uwarp.design/profile-photo?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=avatar-crop) 按模板比例裁剪，再导出 JPG 控制体积。
+部分报名系统要固定比例竖图。可用证件照 / 简历照片类工具按模板比例裁剪，再导出 JPG 控制体积。
 
 裁完后若超过 2MB，用 JPG 压缩或略降质量，别靠微信「发原图再保存」——那次序往往越弄越糊。
 
@@ -79,15 +79,6 @@
 在线工具适合 1～几张。班级集体照裁剪建议用脚本或桌面软件批量；单人求职场景浏览器足够。
 
 ---
-
-## 六、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| 头像裁剪器 | https://www.uwarp.design/pfp-cropper?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=avatar-crop |
-| 方形裁剪 | https://www.uwarp.design/square-crop?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=avatar-crop |
-| 圆形裁剪 | https://www.uwarp.design/circle-crop-image?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=avatar-crop |
-| 证件照 / 简历照片 | https://www.uwarp.design/profile-photo?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=avatar-crop |
 
 先 **裁方**，要圆再 **圆裁**，对照平台尺寸表导出，头像上传就不容易被打回。
 

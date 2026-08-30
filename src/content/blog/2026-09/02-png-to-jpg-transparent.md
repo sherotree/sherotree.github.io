@@ -60,7 +60,7 @@ PNG 可以带 Alpha 通道，也就是「透明」信息。JPG 从设计上就�
 
 ### 3.3 不确定有没有透明？
 
-用 [检查 PNG 是否透明](https://www.uwarp.design/check-if-png-is-transparent) 上传文件，页面会告诉你有没有 Alpha 通道，再决定要不要先填底。
+直接用 3.2 的填充工具铺一层白底再转 JPG，观感最稳。想确认文件是否带透明，可看转换预览里的棋盘格底——透明区域一般显示为棋盘格。
 
 ---
 
@@ -99,14 +99,6 @@ PNG 若是简单色块图，有时比 JPG 还小；照片类 PNG 转 JPG 通常�
 网页图标、Logo 叠图：**PNG**。要更小体积且目标浏览器支持：**WebP（有损或无损 + Alpha）**。发微信、交作业：**JPG** 最省心。
 
 ---
-
-## 六、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| PNG 转 JPG | https://www.uwarp.design/png-to-jpg?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=png-jpg-alpha |
-| 填充透明 PNG | https://www.uwarp.design/fill-transparent-png?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=png-jpg-alpha |
-| 检查 PNG 是否透明 | https://www.uwarp.design/check-if-png-is-transparent |
 
 记住：JPG 没有透明；要发文档就 **先填底再转**，要保留透明就 **别转 JPG**。
 

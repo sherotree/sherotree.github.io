@@ -42,8 +42,8 @@ GIF 用调色板存每一帧，帧率高、画面大、颜色多时，体积涨�
 
 若 GIF 很长，可以：
 
-- 用 [缩短 GIF](https://www.uwarp.design/shorten-gif) 裁掉片头片尾
-- 用 [GIF 调速](https://www.uwarp.design/gif-speed-changer) 加快播放，同样内容占用更少时间轴
+- 先裁掉片头片尾，只留关键内容
+- 加快播放速度，同样内容占用更少时间轴
 
 循环次数设太多也会 inflate 观感上的「重量」；发文档用「播一次」往往就够。
 
@@ -69,7 +69,7 @@ GIF 用调色板存每一帧，帧率高、画面大、颜色多时，体积涨�
 
 ### 4.3 能裁掉中间一段吗？
 
-可以。用 [GIF 裁剪](https://www.uwarp.design/gif-cutter) 选时间范围，去掉无关片头片尾。
+可以。用 GIF 裁剪功能选时间范围，去掉无关片头片尾。
 
 ### 4.4 颜色和帧率怎么权衡？
 
@@ -80,15 +80,6 @@ GIF 用调色板存每一帧，帧率高、画面大、颜色多时，体积涨�
 继续缩宽度到 400px 左右，或缩短时长。极端情况考虑转成短视频格式。
 
 ---
-
-## 五、在线工具
-
-| 任务 | 链接 |
-|------|------|
-| 压缩 GIF | https://www.uwarp.design/gif-compressor?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=gif-wechat |
-| GIF 改尺寸 | https://www.uwarp.design/gif-resizer?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=gif-wechat |
-| GIF 调速 | https://www.uwarp.design/gif-speed-changer?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=gif-wechat |
-| 缩短 GIF | https://www.uwarp.design/shorten-gif?utm_source=csdn&utm_medium=article&utm_campaign=image-toolkit-cn&utm_content=gif-wechat |
 
 GIF 发不出去，按 **压缩 → 改尺寸 → 裁短/加速** 排查，一般都能降到可发范围。
 

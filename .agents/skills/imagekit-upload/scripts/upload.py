@@ -9,17 +9,19 @@ Usage:
   python3 scripts/upload.py ./photo.jpg --env-dir apps/3005-ox
   python3 scripts/upload.py https://example.com/a.png --file-name cover.png
   python3 scripts/upload.py ./logo.svg --name brand-logo --no-unique
-  python3 scripts/upload.py ./hero.png --compress
-  python3 scripts/upload.py ./hero.png --compress --quality 80 --max-width 1600
-  python3 scripts/upload.py ./hero.png --compress --image-format webp
+  python3 scripts/upload.py ./hero.png
+  python3 scripts/upload.py ./hero.png --quality 80 --max-width 1600
+  python3 scripts/upload.py ./hero.png --image-format keep
+  python3 scripts/upload.py ./hero.png --no-compress
   python3 scripts/upload.py ./hero.png --pre "w-1200,q-75,f-jpg"
 
 Reads IMAGEKIT_PRIVATE_KEY from process env, else .env / .env.local
 (cwd → parents, or --env-dir). Optional default folder: IMAGEKIT_FOLDER.
 
-Compression uses ImageKit Upload API `transformation.pre` (server-side),
-not local Pillow/sips. Docs:
-https://imagekit.io/docs/dam/pre-and-post-transformation-on-upload
+Compression is on by default via ImageKit Upload API `transformation.pre`
+(server-side), not local Pillow/sips. PNG/JPG also convert to WebP by
+default. Pass --no-compress or --image-format keep for originals.
+Docs: https://imagekit.io/docs/dam/pre-and-post-transformation-on-upload
 """
 from __future__ import annotations
 
@@ -45,6 +47,9 @@ ENV_FILENAMES = (".env", ".env.local")
 
 DEFAULT_QUALITY = 82
 DEFAULT_MAX_WIDTH = 1600
+
+# Raster types converted to WebP by default when compressing.
+WEBP_SOURCE_EXTS = {".png", ".jpg", ".jpeg"}
 
 # ImageKit format tokens: https://imagekit.io/docs/image-transformation
 FORMAT_TOKEN = {
@@ -238,6 +243,40 @@ def build_pre_transformation(
     return ",".join(parts)
 
 
+def source_extension(source: str, file_name: str | None = None) -> str:
+    """Lowercase file extension from override name or source path/URL."""
+    name = file_name or guess_filename(source, None)
+    return Path(name).suffix.lower()
+
+
+def resolve_image_format(
+    image_format: str | None,
+    source: str,
+    file_name: str | None = None,
+) -> str:
+    """
+    Resolve output format for pre-transform.
+
+    Default (None): PNG/JPG → webp; other types keep original.
+    Explicit --image-format wins.
+    """
+    if image_format is not None:
+        return image_format.strip().lower()
+    if source_extension(source, file_name) in WEBP_SOURCE_EXTS:
+        return "webp"
+    return "keep"
+
+
+def maybe_webp_filename(name: str, image_format: str) -> str:
+    """When converting PNG/JPG to WebP, align Media Library fileName suffix."""
+    if image_format != "webp":
+        return name
+    path = Path(name)
+    if path.suffix.lower() in WEBP_SOURCE_EXTS:
+        return str(path.with_suffix(".webp"))
+    return name
+
+
 def build_multipart(
     fields: dict[str, str],
     file_field: str | None,
@@ -406,10 +445,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--compress",
-        action="store_true",
+        action=argparse.BooleanOptionalAction,
+        default=True,
         help=(
             "Apply ImageKit pre-transformation before storing in Media Library "
-            f"(default: w/h-{DEFAULT_MAX_WIDTH},c-at_max,q-{DEFAULT_QUALITY}). "
+            f"(default: on; w/h-{DEFAULT_MAX_WIDTH},c-at_max,q-{DEFAULT_QUALITY}). "
+            "Use --no-compress for original. "
             "See https://imagekit.io/docs/dam/pre-and-post-transformation-on-upload"
         ),
     )
@@ -418,14 +459,14 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=None,
         metavar="N",
-        help=f"ImageKit q-N (1–100). Default: {DEFAULT_QUALITY} with --compress",
+        help=f"ImageKit q-N (1–100). Default: {DEFAULT_QUALITY} when compressing",
     )
     parser.add_argument(
         "--max-width",
         type=int,
         default=None,
         metavar="PX",
-        help=f"Max width for pre-transform (default: {DEFAULT_MAX_WIDTH} with --compress)",
+        help=f"Max width for pre-transform (default: {DEFAULT_MAX_WIDTH} when compressing)",
     )
     parser.add_argument(
         "--max-height",
@@ -437,8 +478,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--image-format",
         choices=("keep", "auto", "jpeg", "jpg", "webp", "png"),
-        default="keep",
-        help="ImageKit f-* in pre-transform (default: keep original format)",
+        default=None,
+        help=(
+            "ImageKit f-* in pre-transform. Default: webp for png/jpg, "
+            "else keep original. Use keep to disable conversion."
+        ),
     )
     parser.add_argument(
         "--pre",
@@ -473,6 +517,7 @@ def main() -> None:
     folder = args.folder if args.folder is not None else args.folder_pos
 
     pre: str | None = None
+    upload_file_name = args.file_name
     if args.pre and args.pre.strip():
         pre = args.pre.strip()
     elif args.compress:
@@ -484,23 +529,30 @@ def main() -> None:
         max_height = args.max_height
         if max_width is None and max_height is None:
             max_width = DEFAULT_MAX_WIDTH
+        image_format = resolve_image_format(
+            args.image_format, args.source, args.file_name
+        )
         try:
             pre = build_pre_transformation(
                 quality=quality,
                 max_width=max_width,
                 max_height=max_height,
-                image_format=args.image_format,
+                image_format=image_format,
             )
         except ValueError as exc:
             print(f"error: {exc}", file=sys.stderr)
             sys.exit(1)
+        base_name = args.file_name or guess_filename(args.source, None)
+        converted = maybe_webp_filename(base_name, image_format)
+        if converted != base_name:
+            upload_file_name = converted
     elif any(
         x is not None
-        for x in (args.quality, args.max_width, args.max_height)
-    ) or args.image_format != "keep":
+        for x in (args.quality, args.max_width, args.max_height, args.image_format)
+    ):
         print(
             "error: --quality / --max-width / --max-height / --image-format "
-            "require --compress (or pass a full string with --pre)",
+            "cannot be used with --no-compress (omit --no-compress, or use --pre)",
             file=sys.stderr,
         )
         sys.exit(1)
@@ -508,7 +560,7 @@ def main() -> None:
     try:
         result = upload(
             args.source,
-            file_name=args.file_name,
+            file_name=upload_file_name,
             folder=folder,
             tags=tags or None,
             use_unique=not args.no_unique,

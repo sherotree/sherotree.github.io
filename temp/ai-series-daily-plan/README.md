@@ -14,23 +14,22 @@
 
 ## 移回正式目录
 
-单篇移回：
+移回时按目标第三方平台选择目录（一文一平台）。若走 CSDN：
 
 ```bash
-mv temp/ai-series-daily-plan/2026-09/{slug} src/content/blog/2026-09/
+# 单篇
+mv temp/ai-series-daily-plan/2026-09/{slug} src/content/blog/csdn/2026-09/
+
+# 批量某月
+mkdir -p src/content/blog/csdn/2026-09
+cp -R temp/ai-series-daily-plan/2026-09/* src/content/blog/csdn/2026-09/
 ```
 
-批量移回某月：
-
-```bash
-cp -R temp/ai-series-daily-plan/2026-09/* src/content/blog/2026-09/
-```
-
-移回后执行 `npm run build` 验证。
+若走博客园，把路径里的 `csdn` 换成 `cnblogs`。移回后执行 `npm run build` 验证。
 
 ## 目录结构
 
-与 `src/content/blog/{YYYY-MM}/{slug}/index.md` 相同，按排期月份分目录：
+与 `src/content/blog/{platform}/{YYYY-MM}/{slug}/index.md` 相同，按排期月份分目录：
 
 - `2026-09/` — 26 篇
 - `2026-10/` — 24 篇

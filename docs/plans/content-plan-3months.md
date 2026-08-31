@@ -6,7 +6,7 @@
 > **阶段目标**：平台流量、账号关注度、账号权重  
 > **硬约束**：**零软广**——不挂产品短链、不夹「在线工具推荐」式私货；主站导流按**分阶段**执行：**第 1～6 周**平台稿不挂自有站链接，先养平台权重；**第 7 周起**文末可加一行「完整版 / 归档：https://sherotree.github.io/blog/{slug}/」或系列索引  
 > **稿件约定**：既有存稿一律不计入本计划；本表 36 题全部按新写执行  
-> **主站 / 母稿仓库**：本仓库（https://sherotree.github.io）；文章写在 `src/content/blog/{YYYY-MM}/{slug}/`  
+> **主站 / 母稿仓库**：本仓库（https://sherotree.github.io）；文章写在 `src/content/blog/{platform}/{YYYY-MM}/{slug}/`（一文一平台，如 `csdn` / `cnblogs`）  
 > **发布闸门**：囤稿 `draft: true`；按周将当周 3 篇改为 `draft: false` 再上主站并分发六站，避免一次暴露全部存稿  
 > **建站档案**：[chinese-blog-github-pages.md](./chinese-blog-github-pages.md)  
 > **副线**：Twitter 中文精选周刊见 [ai-dev-digest-weekly.md](./ai-dev-digest-weekly.md)；不占本表每周 3 篇原创名额
@@ -28,7 +28,7 @@
 
 **生产只做一次，分发做六次：**
 
-1. 先在本仓库 `src/content/blog/{YYYY-MM}/{slug}/` 写 Markdown 长文（母稿；未发周保持 `draft: true`）  
+1. 先在本仓库 `src/content/blog/{platform}/{YYYY-MM}/{slug}/` 写 Markdown 长文（母稿；一文一平台；未发周保持 `draft: true`）  
 2. **全文同步优先**：CSDN、掘金、博客园、思否、开源中国（结构可几乎相同，只改标题与标签）  
 3. **公众号单独改编**：删减版，配封面  
 

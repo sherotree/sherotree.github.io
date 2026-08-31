@@ -21,6 +21,7 @@
 
 | 项 | 约定 |
 |---|---|
+| 母稿目录 | `src/content/blog/cnblogs/{YYYY-MM}/{slug}/index.md`（一文一平台，勿再放进 `csdn/`） |
 | 标题 | `Agent 面试｜第 N 题｜<短题干>`（N = 1…57；导读为第 0 篇） |
 | 分类 | `Agent工程师面试` |
 | 标签 | `Agent` `LLM` `面试` `AI` + 当题关键词 |

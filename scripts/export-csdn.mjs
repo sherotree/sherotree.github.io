@@ -3,12 +3,14 @@
  * 导出 CSDN 分发稿：去掉 frontmatter，把 ./images/ 换成 jsDelivr 绝对链接，
  * 写入 dist-publish/csdn/；单篇时默认复制到剪贴板。
  *
+ * 母稿根目录：src/content/blog/csdn/
+ *
  * 用法:
- *   npm run export:csdn -- src/content/blog/2026-08/understanding-moe
+ *   npm run export:csdn -- src/content/blog/csdn/2026-08/understanding-moe
  *   npm run export:csdn -- understanding-moe
- *   npm run export:csdn -- src/content/blog/2026-08          # 整月
- *   npm run export:csdn -- 2026-08                           # 整月简写
- *   npm run export:csdn -- src/content/blog                  # 全部
+ *   npm run export:csdn -- src/content/blog/csdn/2026-08   # 整月
+ *   npm run export:csdn -- 2026-08                          # 整月简写
+ *   npm run export:csdn -- src/content/blog/csdn            # 全部 CSDN
  */
 
 import { spawnSync } from 'node:child_process';
@@ -24,8 +26,9 @@ import { basename, dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const BLOG_ROOT = join(ROOT, 'src/content/blog');
-const OUT_DIR = join(ROOT, 'dist-publish/csdn');
+const PLATFORM = 'csdn';
+const BLOG_ROOT = join(ROOT, 'src/content/blog', PLATFORM);
+const OUT_DIR = join(ROOT, 'dist-publish', PLATFORM);
 const OWNER_REPO = 'sherotree/sherotree.github.io';
 const DEFAULT_REF = 'main';
 
@@ -34,14 +37,14 @@ const IMAGE_MD_RE =
 
 function usage(exitCode = 1) {
   console.error(`用法:
-  npm run export:csdn -- <文章|月份目录|blog 根> [--ref <git-ref>] [--no-clipboard] [--out <path>]
+  npm run export:csdn -- <文章|月份目录|csdn 根> [--ref <git-ref>] [--no-clipboard] [--out <path>]
 
 示例:
   npm run export:csdn -- understanding-moe
-  npm run export:csdn -- src/content/blog/2026-08/understanding-moe
+  npm run export:csdn -- src/content/blog/csdn/2026-08/understanding-moe
   npm run export:csdn -- 2026-08
-  npm run export:csdn -- src/content/blog/2026-08
-  npm run export:csdn -- src/content/blog
+  npm run export:csdn -- src/content/blog/csdn/2026-08
+  npm run export:csdn -- src/content/blog/csdn
 `);
   process.exit(exitCode);
 }
@@ -112,57 +115,83 @@ function isPostDir(dir) {
   return existsSync(join(dir, 'index.md'));
 }
 
-function listPostDirsIn(dir) {
-  if (!existsSync(dir) || !statSync(dir).isDirectory()) return [];
-  return readdirSync(dir)
-    .map((name) => join(dir, name))
-    .filter((p) => statSync(p).isDirectory() && isPostDir(p))
-    .sort();
+function isPostFile(file) {
+  return file.endsWith('.md') && basename(file) !== 'index.md';
 }
 
-/** 收集目标下全部文章目录（单篇则为长度 1） */
+/** 月份目录：子项为文章目录或单文件 .md */
+function listPostsInMonth(dir) {
+  if (!existsSync(dir) || !statSync(dir).isDirectory()) return [];
+  const posts = [];
+  for (const name of readdirSync(dir).sort()) {
+    const p = join(dir, name);
+    const st = statSync(p);
+    if (st.isDirectory() && isPostDir(p)) posts.push(p);
+    else if (st.isFile() && isPostFile(p)) posts.push(p);
+  }
+  return posts;
+}
+
+function collectUnderPlatform(platformDir) {
+  const nested = [];
+  if (!existsSync(platformDir)) return nested;
+  for (const name of readdirSync(platformDir).sort()) {
+    const child = join(platformDir, name);
+    if (!statSync(child).isDirectory()) continue;
+    nested.push(...listPostsInMonth(child));
+  }
+  return nested;
+}
+
+/** 收集目标下全部文章（目录含 index.md，或单文件 .md） */
 function resolvePostDirs(target) {
   const abs = resolve(process.cwd(), target);
 
   if (existsSync(abs)) {
-    if (statSync(abs).isFile() && basename(abs) === 'index.md') {
-      return [dirname(abs)];
+    if (statSync(abs).isFile() && abs.endsWith('.md')) {
+      return [abs];
     }
     if (statSync(abs).isDirectory()) {
       if (isPostDir(abs)) return [abs];
 
-      // 月份目录：直接子目录是文章
-      const direct = listPostDirsIn(abs);
-      if (direct.length) return direct;
+      // 月份目录
+      const monthPosts = listPostsInMonth(abs);
+      if (monthPosts.length) return monthPosts;
 
-      // blog 根：YYYY-MM/*/index.md
-      const nested = [];
-      for (const name of readdirSync(abs).sort()) {
-        const child = join(abs, name);
-        if (!statSync(child).isDirectory()) continue;
-        nested.push(...listPostDirsIn(child));
+      // 平台根（csdn）或误传的 blog 根
+      const asPlatform = collectUnderPlatform(abs);
+      if (asPlatform.length) return asPlatform;
+
+      // blog 根：只导出本脚本对应平台
+      const platformChild = join(abs, PLATFORM);
+      if (existsSync(platformChild)) {
+        const under = collectUnderPlatform(platformChild);
+        if (under.length) return under;
       }
-      if (nested.length) return nested;
     }
   }
 
-  // YYYY-MM 简写
+  // YYYY-MM 简写 → csdn/{YYYY-MM}
   if (/^\d{4}-\d{2}$/.test(target)) {
     const monthDir = join(BLOG_ROOT, target);
-    const posts = listPostDirsIn(monthDir);
+    const posts = listPostsInMonth(monthDir);
     if (posts.length) return posts;
     console.error(`月份目录为空或不存在: ${relative(ROOT, monthDir)}`);
     process.exit(1);
   }
 
-  // slug-only：在 blog 下按目录名查找
+  // slug-only：在 csdn 下按目录名 / 文件名查找
   const slug = target.replace(/\/+$/, '').split('/').pop();
   const hits = [];
   for (const month of readdirSync(BLOG_ROOT)) {
     const monthDir = join(BLOG_ROOT, month);
     if (!statSync(monthDir).isDirectory()) continue;
-    const candidate = join(monthDir, slug);
-    if (isPostDir(candidate)) hits.push(candidate);
+    const dirCandidate = join(monthDir, slug);
+    if (isPostDir(dirCandidate)) hits.push(dirCandidate);
+    const fileCandidate = join(monthDir, `${slug}.md`);
+    if (existsSync(fileCandidate) && statSync(fileCandidate).isFile()) {
+      hits.push(fileCandidate);
+    }
   }
 
   if (hits.length === 1) return hits;
@@ -220,9 +249,13 @@ function copyToClipboard(text) {
   return false;
 }
 
-function exportOne(postDir, { ref, outPath }) {
-  const mdPath = join(postDir, 'index.md');
-  const slug = basename(postDir);
+function exportOne(postPath, { ref, outPath }) {
+  const isFile = statSync(postPath).isFile();
+  const mdPath = isFile ? postPath : join(postPath, 'index.md');
+  const postDir = isFile ? dirname(postPath) : postPath;
+  const slug = isFile
+    ? basename(postPath, '.md')
+    : basename(postPath);
   const raw = readFileSync(mdPath, 'utf8');
   const { data, body } = parseFrontmatter(raw);
   const { rewritten, missing } = rewriteImages(body, postDir, ref);
@@ -253,8 +286,11 @@ function main() {
   }
 
   const results = [];
-  for (const postDir of postDirs) {
-    const slug = basename(postDir);
+  for (const postPath of postDirs) {
+    const isFile = statSync(postPath).isFile();
+    const slug = isFile
+      ? basename(postPath, '.md')
+      : basename(postPath);
     let outPath;
     if (args.out) {
       const absOut = resolve(process.cwd(), args.out);
@@ -265,7 +301,7 @@ function main() {
       outPath = join(OUT_DIR, `${slug}.md`);
     }
 
-    const result = exportOne(postDir, { ref: args.ref, outPath });
+    const result = exportOne(postPath, { ref: args.ref, outPath });
     results.push(result);
 
     console.log(`已导出: ${relative(ROOT, result.outPath)}`);

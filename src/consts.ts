@@ -16,6 +16,14 @@ export const SERIES: Record<string, { title: string; description: string }> = {
     title: 'Agent 工程笔记',
     description: '工具调用、上下文管理与评测：Agent 工程的实践笔记。',
   },
+  'understanding-ai': {
+    title: '理解 AI',
+    description: '把模型与系统里的关键概念讲清楚。',
+  },
+  'ai-coding-workflow': {
+    title: 'AI 编程效率',
+    description: '编辑器 Agent、规则与工作流：把 AI 编程用稳。',
+  },
 };
 
 export function formatDate(date: Date): string {

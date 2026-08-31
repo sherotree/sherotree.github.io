@@ -25,7 +25,7 @@
 
 **热点快评**（`ai-hot-take-weekly` 等）**不算系列正文**，每周最多 1 篇机动，不占下面 60 篇名额。
 
-**与图片转化系列的关系：** `src/content/blog/2026-09/` 下图片转化稿走搜索工具意图；本计划三线走原理与工程，标题不混「在线转换」。
+**与图片转化系列的关系：** `src/content/blog/csdn/2026-09/` 下图片转化稿走搜索工具意图；本计划三线走原理与工程，标题不混「在线转换」。
 
 ---
 
@@ -183,7 +183,7 @@ Sun  机动：热点快评 / 系列复盘 / 休息囤稿
 
 ## 六、与现有计划的衔接
 
-1. **母稿位置**：`src/content/blog/{YYYY-MM}/{slug}/index.md`；未发周保持 `draft: true`。
+1. **母稿位置**：`src/content/blog/{platform}/{YYYY-MM}/{slug}/index.md`（一文一平台）；未发周保持 `draft: true`。
 2. **`series` 枚举**：`agent-notes` · `understanding-ai` · `ai-coding-workflow`（另：`browser-graphics` 等非 AI 系列照旧）。
 3. **六站分发**：
    - 理解 AI → CSDN / 博客园标题偏「理解 / 详解」
@@ -222,7 +222,7 @@ Sun  机动：热点快评 / 系列复盘 / 休息囤稿
 ## 九、执行清单
 
 - [x] 已有母稿补 `series` frontmatter（`agent-notes` / `understanding-ai` / `ai-coding-workflow`）— 2026-08-27
-- [x] 待写 51 篇骨架已生成（`draft: true`，排期自 2026-09-01 起按周模板轮转）— 2026-08-27；**暂存**于 `temp/ai-series-daily-plan/`，未进 `src/content/blog/`
+- [x] 待写 51 篇骨架已生成（`draft: true`，排期自 2026-09-01 起按周模板轮转）— 2026-08-27；**暂存**于 `temp/ai-series-daily-plan/`，未进 `src/content/blog/{platform}/`
 - [x] `2026-09/` 共 26 篇正文已写完（`ruanyifeng-tech-writing` + 手绘风配图 + ImageKit CDN）— 2026-08-28
 - [ ] 主站增加系列索引页或系列 tag 聚合（可选，建站层）
 - [ ] 每周末记录：哪条线阅读/搜索更好，调 Phase 2/3 比重

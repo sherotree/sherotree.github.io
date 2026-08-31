@@ -225,7 +225,7 @@
 | 周 | 题号 | 状态 |
 |---|---|---|
 | 0 导读 | 第 0 篇 | ✅ [`00-series-map.md`](./longform/agent-interview/00-series-map.md) |
-| W1 | 1.1–1.3 | ✅ 1.1 [`01`](./longform/agent-interview/01-what-is-agent.md) · 1.2 [`02`](./longform/agent-interview/02-when-not-to-use-agent.md) · 1.3 [`03`](./longform/agent-interview/03-react-vs-plan-execute.md) |
+| W1 | 1.1–1.3 | ✅ 1.1 [`cnblogs/…/01`](../../src/content/blog/cnblogs/2026-09/agent-interview-01-what-is-agent/index.md) · 1.2 [`02`](../../src/content/blog/cnblogs/2026-09/agent-interview-02-when-not-to-use-agent/index.md) · 1.3 [`03`](../../src/content/blog/cnblogs/2026-09/agent-interview-03-react-vs-plan-execute/index.md) |
 | W2 | 1.4–1.6 | ⬜ |
 | W3 | 2.1–2.3 | ⬜ |
 | W4 | 2.4–2.5 · 3.1 | ⬜ |
@@ -249,7 +249,8 @@
 
 ## 七、下一步
 
-- [ ] 定 W1 周一的具体日期  
+- [ ] 定 W1 周一的具体日期（母稿暂按 2026-09-07 / 09 / 11，`draft: true`）  
 - [ ] 博客园建分类 `Agent工程师面试` + 写好简介  
-- [ ] 写第 0 篇 + 1.1 / 1.2 / 1.3 存稿  
+- [x] 写 1.1 / 1.2 / 1.3 存稿 → `src/content/blog/cnblogs/2026-09/`  
+- [ ] 写第 0 篇地图存稿  
 - [ ] 同步改 [`longform/agent-interview-series-plan.md`](./longform/agent-interview-series-plan.md) 发布平台为「博客园主」

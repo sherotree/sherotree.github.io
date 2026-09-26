@@ -3,7 +3,7 @@ title: 理解 MIT 协议：对使用者意味着什么
 date: 2026-08-21
 description: 用白话说明 MIT License 对使用者的含义：可以商用、修改、再分发，但需保留版权与许可声明，且软件按「原样」提供无担保。
 tags: [开源, MIT, 许可证, 基础概念]
-draft: true
+draft: false
 ---
 
 MIT License 是一种宽松的开源许可证。许多前端库、工具与 SDK 采用它。

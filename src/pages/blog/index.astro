@@ -1,7 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { formatDate } from '../../consts';
+import {
+  PLATFORMS,
+  PLATFORM_IDS,
+  formatDate,
+  getPostPlatform,
+} from '../../consts';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -18,6 +23,14 @@ for (const post of posts) {
   }
 }
 
+const platformCounts = Object.fromEntries(
+  PLATFORM_IDS.map((id) => [id, 0])
+) as Record<(typeof PLATFORM_IDS)[number], number>;
+for (const post of posts) {
+  const platform = getPostPlatform(post);
+  if (platform) platformCounts[platform] += 1;
+}
+
 function monthHeading(ym: string) {
   const [y, m] = ym.split('-');
   return `${y} 年 ${Number(m)} 月`;
@@ -26,6 +39,20 @@ function monthHeading(ym: string) {
 
 <BaseLayout title="网络日志" description="全部文章归档，按月份倒序排列。">
   <h1>网络日志</h1>
+  <p class="filter-row muted">
+    分发渠道：
+    <a href="/blog/platform/">全部</a>
+    {
+      PLATFORM_IDS.map((id) => (
+        <>
+          {' · '}
+          <a href={`/blog/platform/${id}/`}>
+            {PLATFORMS[id].title}（{platformCounts[id]}）
+          </a>
+        </>
+      ))
+    }
+  </p>
   {
     posts.length === 0 ? (
       <p class="muted">还没有文章。</p>
@@ -34,14 +61,27 @@ function monthHeading(ym: string) {
         <section>
           <h2 class="year-heading">{monthHeading(ym)}</h2>
           <ul class="post-list">
-            {monthPosts.map((post) => (
-              <li>
-                <time datetime={post.data.date.toISOString().slice(0, 10)}>
-                  {formatDate(post.data.date)}
-                </time>
-                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-              </li>
-            ))}
+            {monthPosts.map((post) => {
+              const platform = getPostPlatform(post);
+              return (
+                <li>
+                  <time datetime={post.data.date.toISOString().slice(0, 10)}>
+                    {formatDate(post.data.date)}
+                  </time>
+                  <span class="post-list-main">
+                    <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                    {platform && (
+                      <a
+                        class="platform-tag"
+                        href={`/blog/platform/${platform}/`}
+                      >
+                        {PLATFORMS[platform].title}
+                      </a>
+                    )}
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </section>
       ))

@@ -8,5 +8,6 @@
 | [plans/chinese-blog-github-pages.md](./plans/chinese-blog-github-pages.md) | 建站实施计划（已执行，作档案） |
 | [plans/ai-dev-digest-weekly.md](./plans/ai-dev-digest-weekly.md) | 「Twitter 中文精选」周刊副线计划 |
 | [plans/ai-series-daily-plan.md](./plans/ai-series-daily-plan.md) | AI 三系列日更选题（Agent 工程 / 理解 AI / AI 编程效率） |
+| [plans/image-conversion-traffic-plan.md](./plans/image-conversion-traffic-plan.md) | CSDN 图片转化系列引流计划（运营稿，不进站点集合） |
 
-写作文风见 `.agents/skills/ruanyifeng-tech-writing/`。
+站点按渠道浏览：`/blog/platform/`（目录 `src/content/blog/{platform}/` 即归属）。写作文风见 `.agents/skills/ruanyifeng-tech-writing/`。

@@ -3,7 +3,7 @@ title: Git：merge 与 rebase 分别解决什么问题
 date: 2026-08-01
 description: 说明 Git merge 与 rebase 各自解决什么问题：保留分叉历史，还是把提交变直；以及何时不该 rebase 公共分支。
 tags: [Git, 基础概念, merge, rebase]
-draft: true
+draft: false
 ---
 
 merge 与 rebase 都是把「一条线上的新提交」合进「另一条线」的手段，但它们改写历史的方式不同。

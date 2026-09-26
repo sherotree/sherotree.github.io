@@ -3,7 +3,7 @@ title: fetch：超时、重试与 AbortController
 date: 2026-08-05
 description: 说明用 fetch 时如何做超时取消、可重试错误判断与退避重试，核心是 AbortController 与清晰的失败分类。
 tags: [前端, fetch, AbortController, 网络]
-draft: true
+draft: false
 ---
 
 `fetch` 是浏览器里发 HTTP 请求的标准方法。默认它**不会**因「等太久」自动失败，也**不会**帮你重试。

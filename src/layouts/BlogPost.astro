@@ -1,6 +1,14 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { SITE_URL, AUTHOR, GITHUB_URL, SERIES, formatDate } from '../consts';
+import {
+  SITE_URL,
+  AUTHOR,
+  GITHUB_URL,
+  SERIES,
+  PLATFORMS,
+  formatDate,
+  getPostPlatform,
+} from '../consts';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -9,6 +17,7 @@ interface Props {
 
 const { post } = Astro.props;
 const { title, date, updated, description, tags, series } = post.data;
+const platform = getPostPlatform(post);
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
 const jsonLd = {
@@ -33,6 +42,14 @@ const jsonLd = {
     <p class="post-meta">
       <time datetime={date.toISOString().slice(0, 10)}>{formatDate(date)}</time>
       {updated && <span> · 更新于 {formatDate(updated)}</span>}
+      {
+        platform && PLATFORMS[platform] && (
+          <span>
+            {' · 分发：'}
+            <a href={`/blog/platform/${platform}/`}>{PLATFORMS[platform].title}</a>
+          </span>
+        )
+      }
       {
         series && SERIES[series] && (
           <span>

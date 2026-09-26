@@ -3,7 +3,7 @@ title: 前端里 SVG 三种用法：img、内联、组件
 date: 2026-08-04
 description: 对比前端使用 SVG 的三种常见方式：当作图片引用、内联进 DOM、封装成组件，并说明各自适合什么场景。
 tags: [前端, SVG, CSS, React]
-draft: true
+draft: false
 ---
 
 SVG（Scalable Vector Graphics，可缩放矢量图形）是用 XML 描述的矢量图，放大仍保持清晰，适合图标与简单插画。

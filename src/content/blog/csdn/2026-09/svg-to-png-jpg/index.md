@@ -1,4 +1,10 @@
-# SVG 图标导出 PNG/JPG：模糊、透明底、尺寸怎么设
+---
+title: SVG 图标导出 PNG/JPG：模糊、透明底、尺寸怎么设
+date: 2026-09-17
+description: 把 SVG 图标按像素倍率栅格化为 PNG/JPG，避免尺寸过小发虚，并说明透明底与格式选择。
+tags: [SVG, PNG, JPG, 前端, 在线工具]
+draft: false
+---
 
 前端拿到设计师的 SVG 图标，要放进 PPT、交 Android 资源、或发运营做推文——对方往往只要 PNG/JPG。直接改扩展名不行，需要 **栅格化**：按指定像素宽高渲染成位图。
 

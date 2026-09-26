@@ -3,7 +3,7 @@ title: 当周快评：Google Antigravity——Agent 被提到主界面
 date: 2026-08-28
 description: 围绕 Google 随 Gemini 3 推出的 Antigravity 做开发者向快评：是什么、怎么理解与现有 Agent IDE 的关系、值不值得立刻跟进。
 tags: [AI, 热点, Agent, Google]
-draft: true
+draft: false
 ---
 
 Google 在推出 Gemini 3 一代能力时，同步介绍了面向开发者的 agentic 开发平台 Google Antigravity：在熟悉的 AI IDE 体验之上，把 Agent 提升到更主的操作面，并强调可使用编辑器、终端与浏览器等工具完成端到端任务。

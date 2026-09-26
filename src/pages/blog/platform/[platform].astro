@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import {
+  PLATFORMS,
+  PLATFORM_IDS,
+  formatDate,
+  getPostPlatform,
+  type Platform,
+} from '../../../consts';
+
+export async function getStaticPaths() {
+  return PLATFORM_IDS.map((platform) => ({
+    params: { platform },
+    props: { meta: PLATFORMS[platform] },
+  }));
+}
+
+const { platform } = Astro.params;
+const { meta } = Astro.props;
+const platformId = platform as Platform;
+
+const posts = (
+  await getCollection(
+    'blog',
+    (entry) => !entry.data.draft && getPostPlatform(entry) === platformId
+  )
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const postsByMonth = new Map<string, typeof posts>();
+for (const post of posts) {
+  const iso = post.data.date.toISOString().slice(0, 7);
+  const list = postsByMonth.get(iso);
+  if (list) list.push(post);
+  else postsByMonth.set(iso, [post]);
+}
+
+function monthHeading(ym: string) {
+  const [y, m] = ym.split('-');
+  return `${y} 年 ${Number(m)} 月`;
+}
+---
+
+<BaseLayout
+  title={`分发：${meta.title}`}
+  description={meta.description}
+>
+  <p class="muted">
+    <a href="/blog/">网络日志</a>
+    {' · '}
+    <a href="/blog/platform/">分发渠道</a>
+    {' · '}
+    {meta.title}
+  </p>
+  <h1>分发：{meta.title}</h1>
+  <p class="muted">{meta.description}</p>
+  {
+    posts.length === 0 ? (
+      <p class="muted">该渠道还没有已发布文章。</p>
+    ) : (
+      [...postsByMonth.entries()].map(([ym, monthPosts]) => (
+        <section>
+          <h2 class="year-heading">{monthHeading(ym)}</h2>
+          <ul class="post-list">
+            {monthPosts.map((post) => (
+              <li>
+                <time datetime={post.data.date.toISOString().slice(0, 10)}>
+                  {formatDate(post.data.date)}
+                </time>
+                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    )
+  }
+</BaseLayout>

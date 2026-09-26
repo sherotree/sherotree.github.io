@@ -4,7 +4,7 @@ date: 2026-08-31
 description: 加强版详解：把上下文窗口、裁剪策略、工具结果治理与评测集串成一条可执行的上下文工程实践（基于前两月高频「理解 X / Agent」题型加码）。
 tags: [AI, 上下文工程, Agent, 加强版]
 series: understanding-ai
-draft: true
+draft: false
 ---
 
 前两月写得最多、也最适合加码的题型，是「理解 X」与 Agent 基础：窗口、token、工具、裁剪、评测。各篇分开读够用；工程上它们是同一条链。

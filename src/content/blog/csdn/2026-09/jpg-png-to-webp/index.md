@@ -1,4 +1,10 @@
-# 网页要上 WebP：JPG/PNG 怎么转，以及何时别转
+---
+title: 网页要上 WebP：JPG/PNG 怎么转，以及何时别转
+date: 2026-09-10
+description: 讲清 WebP 适合网页省流量的场景，以及交作业、发微信等仍该用 JPG/PNG 的边界；附浏览器转换与兼容回退思路。
+tags: [WebP, 前端, 性能, 图片格式, 在线工具]
+draft: false
+---
 
 前端做性能优化时，常听到「把图片换成 WebP」。同样画质下，WebP 往往比 JPG 小 25%～35%；带透明的 PNG 转 WebP 也能省不少流量。
 

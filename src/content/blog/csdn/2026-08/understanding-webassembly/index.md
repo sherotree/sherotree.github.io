@@ -3,7 +3,7 @@ title: 理解 WebAssembly：它解决什么问题
 date: 2026-08-07
 description: 说明 WebAssembly（Wasm）要解决的问题：把紧循环与算力密集逻辑以近原生性能跑在浏览器或边缘环境，并与 JavaScript 分工协作。
 tags: [WebAssembly, 前端, 基础概念, 性能]
-draft: true
+draft: false
 ---
 
 WebAssembly（简称 Wasm）是一种可在浏览器（以及越来越多其它运行时）里执行的二进制指令格式。它不是用来取代 JavaScript 写页面的，而是给「算得重、又想在 Web 里跑」的那部分逻辑一条更合适的路。

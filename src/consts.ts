@@ -7,6 +7,24 @@ export const REPO_URL = 'https://github.com/sherotree/sherotree.github.io';
 /** 与产品站共用的 GA4 Measurement ID */
 export const GA_MEASUREMENT_ID = 'G-DTQJMNLS97';
 
+/**
+ * 第三方分发渠道（与 `src/content/blog/{platform}/` 目录一一对应）。
+ * 母稿一文只归属一个渠道；本站统一以 `/blog/{slug}/` 展示。
+ */
+export const PLATFORMS = {
+  csdn: {
+    title: 'CSDN',
+    description: '搜索长尾与教程完整度优先的分发渠道母稿。',
+  },
+  cnblogs: {
+    title: '博客园',
+    description: '长文与工程向读者优先的分发渠道母稿。',
+  },
+} as const;
+
+export type Platform = keyof typeof PLATFORMS;
+export const PLATFORM_IDS = Object.keys(PLATFORMS) as Platform[];
+
 export const SERIES: Record<string, { title: string; description: string }> = {
   'browser-graphics': {
     title: '浏览器里的图形',
@@ -28,4 +46,13 @@ export const SERIES: Record<string, { title: string; description: string }> = {
 
 export function formatDate(date: Date): string {
   return `${date.getUTCFullYear()}年${date.getUTCMonth() + 1}月${date.getUTCDate()}日`;
+}
+
+/** 从母稿路径解析分发渠道：`src/content/blog/{platform}/...` */
+export function getPostPlatform(post: { filePath?: string }): Platform | undefined {
+  if (!post.filePath) return undefined;
+  const match = post.filePath.match(/(?:^|\/)content\/blog\/([^/]+)\//);
+  const id = match?.[1];
+  if (id && id in PLATFORMS) return id as Platform;
+  return undefined;
 }

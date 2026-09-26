@@ -3,7 +3,7 @@ title: Agent 面试｜第 1 题｜什么是 Agent？和 Chatbot / Workflow 的�
 date: 2026-09-07
 description: 面试里先分清 Agent、Chatbot、Workflow：看谁决定下一步，而不是产品文案怎么称呼。
 tags: [Agent, 面试, LLM, AI, Chatbot, Workflow]
-draft: true
+draft: false
 ---
 
 这两年，几乎所有 AI 项目都爱给自己挂上 Agent（智能体）三个字。

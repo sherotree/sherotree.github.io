@@ -3,7 +3,7 @@ title: Agent 面试｜第 3 题｜ReAct 和 Plan-and-Execute 怎么选？
 date: 2026-09-11
 description: ReAct 与 Plan-and-Execute 的区别、选型维度，以及生产里常见的混合用法与面试追问。
 tags: [Agent, ReAct, 面试, Agent架构, AI]
-draft: true
+draft: false
 ---
 
 ## 原题

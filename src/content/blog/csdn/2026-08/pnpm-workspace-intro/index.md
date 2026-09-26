@@ -3,7 +3,7 @@ title: pnpm workspace 入门：多包仓库怎么组织
 date: 2026-08-23
 description: 说明用 pnpm workspace 组织 monorepo：workspace 声明、包之间依赖、以及和多仓库相比解决什么问题。
 tags: [pnpm, monorepo, Node.js, 工程]
-draft: true
+draft: false
 ---
 
 pnpm workspace 是用 pnpm 包管理器把多个 package 放进同一仓库协同开发的方式，也就是常见的 monorepo 实践之一。

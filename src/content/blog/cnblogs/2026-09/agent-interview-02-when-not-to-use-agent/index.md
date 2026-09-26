@@ -3,7 +3,7 @@ title: Agent 面试｜第 2 题｜什么时候不该用 Agent？
 date: 2026-09-09
 description: 面试里如何否决 Agent：固定流程、不可回滚、必须可复现三类场景，以及替代方案与追问。
 tags: [Agent, 面试, 架构决策, Workflow, AI]
-draft: true
+draft: false
 ---
 
 ## 原题

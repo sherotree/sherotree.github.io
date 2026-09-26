@@ -4,7 +4,7 @@ date: 2026-08-15
 description: 用白话说明 Model Context Protocol（MCP）：宿主如何通过统一协议把文件系统、数据库等工具接到模型，以及工具循环怎么转。
 tags: [AI, MCP, Agent, 工具调用]
 series: understanding-ai
-draft: true
+draft: false
 ---
 
 MCP（Model Context Protocol，模型上下文协议）是一种让 AI 应用（宿主）用统一方式连接外部工具与数据源的开放协议。

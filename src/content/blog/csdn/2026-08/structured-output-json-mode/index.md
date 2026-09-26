@@ -4,7 +4,7 @@ date: 2026-08-20
 description: 说明结构化输出与 JSON Mode：让模型按 schema 产出可解析 JSON，适合接程序，而不是只靠「请输出 JSON」形容词。
 tags: [AI, JSON Mode, 结构化输出, API]
 series: understanding-ai
-draft: true
+draft: false
 ---
 
 结构化输出（structured output）指让模型按约定形态返回数据，常见是 JSON，便于程序直接解析。JSON Mode / schema 约束是各厂商实现这一目标的手段。

@@ -4,7 +4,7 @@ date: 2026-08-22
 description: 专栏「Agent 工程笔记」第二篇：上下文超窗或噪音过多时，按优先级保留系统规则与当前目标，砍掉重复日志与过期闲聊。
 tags: [AI, Agent, 上下文, 系列]
 series: agent-notes
-draft: true
+draft: false
 ---
 
 上下文太长时，不是「模型突然变笨」一种可能，更常见的是：关键信息被挤出窗口，或噪音淹没了目标。

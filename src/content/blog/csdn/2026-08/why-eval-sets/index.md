@@ -4,7 +4,7 @@ date: 2026-08-26
 description: 专栏「Agent 工程笔记」第三篇：用固定评测集衡量 Agent，而不是靠一次演示成功；说明评测集最小组成与回归用法。
 tags: [AI, Agent, 评测, 系列]
 series: agent-notes
-draft: true
+draft: false
 ---
 
 评测集（eval set）是一组固定的任务与验收标准，用来反复测量 Agent 或提示策略是否变好、变坏。

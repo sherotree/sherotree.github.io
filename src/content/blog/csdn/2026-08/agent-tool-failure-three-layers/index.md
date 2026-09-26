@@ -4,7 +4,7 @@ date: 2026-08-19
 description: 专栏「Agent 工程笔记」第一篇：工具调用失败时按模型决策、协议与参数、执行环境三层排查，避免只盯着报错原文空转。
 tags: [AI, Agent, 工具调用, 系列]
 series: agent-notes
-draft: true
+draft: false
 ---
 
 Agent 靠工具调用（tool calling）读写文件、跑命令、查接口。失败时，控制台往往只丢一句「tool error」，排障却可能停在错误层。

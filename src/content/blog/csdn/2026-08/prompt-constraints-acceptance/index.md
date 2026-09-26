@@ -4,7 +4,7 @@ date: 2026-08-16
 description: 说明给模型写提示时，用可检查的约束与验收条件，为何比「优雅、专业、全面」一类形容词更能得到稳定结果。
 tags: [AI, Prompt, 方法论, Agent]
 series: understanding-ai
-draft: true
+draft: false
 ---
 
 Prompt（提示词）是你给模型的任务说明。写得含糊，输出就漂；写得可检查，输出才容易收敛。

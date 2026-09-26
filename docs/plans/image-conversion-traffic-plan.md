@@ -101,70 +101,70 @@ https://www.uwarp.design/{slug}?utm_source=csdn&utm_medium=article&utm_campaign=
 - **标题备选：** `iPhone 照片 HEIC 转 JPG/PNG 最省事的方法（浏览器在线）`
 - **FAQ 种子：** Windows 打不开 HEIC？转完发钉钉还是很大？要不要再压成 WebP？
 - **锚文本：** HEIC转JPG在线、免费HEIC转PNG
-- **状态：** `draft` · 稿：`01-heic-to-jpg-png.md`
+- **状态：** `draft` · 稿：`heic-to-jpg-png/index.md`
 
 ### 2 — 透明 PNG → JPG
 
 - **标题备选：** `PNG 转 JPG 黑底/花屏？透明通道处理与白底填充`
 - **FAQ 种子：** 为什么 JPG 没有透明？需要透明该用什么格式？
 - **锚文本：** PNG转JPG、填充透明PNG
-- **状态：** `draft` · 稿：`02-png-to-jpg-transparent.md`
+- **状态：** `draft` · 稿：`png-to-jpg-transparent/index.md`
 
 ### 3 — GIF 体积（微信/文档）
 
 - **标题备选：** `GIF 太大发不了微信？压缩、缩小尺寸、加快速度 checklist`
 - **FAQ 种子：** 压完糊了怎么办？循环次数？裁掉片头片尾？
 - **锚文本：** 在线压缩GIF、GIF改尺寸
-- **状态：** `draft` · 稿：`03-gif-compress-wechat.md`
+- **状态：** `draft` · 稿：`gif-compress-wechat/index.md`
 
 ### 4 — 视频 → GIF 教程
 
 - **标题备选：** `MP4/录屏转 GIF 做技术文档动图（可加字幕条）`
 - **FAQ 种子：** 和直接嵌视频比何时用 GIF？时长建议多少秒？
 - **锚文本：** 视频转GIF、GIF加字幕
-- **状态：** `draft` · 稿：`04-video-to-gif-tutorial.md`
+- **状态：** `draft` · 稿：`video-to-gif-tutorial/index.md`
 
 ### 5 — WebP
 
 - **标题备选：** `前端性能：JPG/PNG 转 WebP 实操与兼容回退`
 - **FAQ 种子：** Safari 老版本？动画 WebP vs GIF？
 - **锚文本：** JPG转WebP、PNG转WebP在线
-- **状态：** `draft` · 稿：`05-jpg-png-to-webp.md`
+- **状态：** `draft` · 稿：`jpg-png-to-webp/index.md`
 
 ### 6 — 打码 + EXIF
 
 - **标题备选：** `开发者截图防泄密：打码 + 去掉 EXIF 位置信息`
 - **FAQ 种子：** 只涂鸦够不够？GPS 在哪看？
 - **锚文本：** 图片打码在线、去除EXIF
-- **状态：** `draft` · 稿：`06-screenshot-censor-exif.md`
+- **状态：** `draft` · 稿：`screenshot-censor-exif/index.md`
 
 ### 7 — PSD 转出图
 
 - **标题备选：** `没有 Photoshop 怎么打开 PSD？在线转 JPG/PNG`
 - **FAQ 种子：** 图层会丢吗？复杂效果糊了怎么办？（诚实说明能力边界）
 - **锚文本：** PSD转JPG、PSD转PNG免费
-- **状态：** `draft` · 稿：`07-psd-to-jpg-png.md`
+- **状态：** `draft` · 稿：`psd-to-jpg-png/index.md`
 
 ### 8 — SVG 导出
 
 - **标题备选：** `前端切图：SVG 转 PNG/JPG 避免发虚的设置清单`
 - **FAQ 种子：** 2x/3x 怎么导？要不要留透明底？
 - **锚文本：** SVG转PNG在线、SVG查看器
-- **状态：** `draft` · 稿：`08-svg-to-png-jpg.md`
+- **状态：** `draft` · 稿：`svg-to-png-jpg/index.md`
 
 ### 9 — 头像裁剪
 
 - **标题备选：** `简历/微信头像尺寸怎么裁？方形与圆形在线裁剪`
 - **FAQ 种子：** 常见像素表；圆裁导出是否带透明
 - **锚文本：** 头像裁剪、圆形裁剪图片
-- **状态：** `draft` · 稿：`09-avatar-crop-resume.md`
+- **状态：** `draft` · 稿：`avatar-crop-resume/index.md`
 
 ### 10 — 拼图 / 合并
 
 - **标题备选：** `两张图左右/上下拼接：竞品对比图、文档附图快速搞定`
 - **FAQ 种子：** PNG 透明拼接？多图宫格用哪个？
 - **锚文本：** 在线合并图片、图片拼接工具
-- **状态：** `draft` · 稿：`10-merge-images-combine.md`
+- **状态：** `draft` · 稿：`merge-images-combine/index.md`
 
 ---
 

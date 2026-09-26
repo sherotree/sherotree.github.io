@@ -3,7 +3,7 @@ title: 理解 JWT：三段分别是什么
 date: 2026-08-02
 description: 拆开 JSON Web Token 的三段结构：Header、Payload、Signature 各自做什么，以及 JWT 不能解决什么问题。
 tags: [JWT, 鉴权, 基础概念, 安全]
-draft: true
+draft: false
 ---
 
 JWT（JSON Web Token）是一种把声明（claims）编码成可传递字符串的方式，常见形态是三段用点号连接的 Base64URL 文本。

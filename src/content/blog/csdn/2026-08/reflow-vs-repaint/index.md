@@ -3,7 +3,7 @@ title: 重排与重绘：前端性能的两个词
 date: 2026-08-13
 description: 用白话区分浏览器重排（layout/reflow）与重绘（paint）：几何变化常触发重排，外观颜色变化可能只重绘，并给出少踩坑的写法直觉。
 tags: [前端, 性能, 重排, 重绘, 浏览器]
-draft: true
+draft: false
 ---
 
 重排（reflow / layout）与重绘（repaint）是浏览器把 DOM/CSS 变成屏幕像素时的两段常见工作。

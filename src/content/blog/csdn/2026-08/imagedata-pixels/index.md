@@ -4,7 +4,7 @@ date: 2026-08-08
 description: 专栏「浏览器里的图形」第二篇：用 getImageData / putImageData 读写像素，理解 RGBA 排列，并完成一个最小灰度处理。
 tags: [前端, Canvas, ImageData, 浏览器图形, 系列]
 series: browser-graphics
-draft: true
+draft: false
 ---
 
 ImageData 是 Canvas 里表示一块矩形像素的数据对象：宽度、高度，以及一段按 RGBA 排好的字节数组。

@@ -4,7 +4,7 @@ date: 2026-08-04
 description: 专栏「浏览器里的图形」第一篇：用最小步骤在 Canvas 上画出第一根线，并弄清坐标系与路径 API 的基本节奏。
 tags: [前端, Canvas, 浏览器图形, 系列]
 series: browser-graphics
-draft: true
+draft: false
 ---
 
 Canvas 是浏览器提供的一块位图画布：你用脚本下指令，像素被画上去，适合图表、小游戏、图像处理入门。

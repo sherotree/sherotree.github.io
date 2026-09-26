@@ -3,7 +3,7 @@ title: 当周快评：Cursor 把 Agent 接到 Gmail / Drive / Calendar
 date: 2026-08-14
 description: 围绕 2026 年 8 月 Cursor 的 Google Workspace 插件做开发者向快评：是什么、怎么开、什么场景值得用，以及权限边界要注意什么。
 tags: [AI, 热点, Cursor, Agent]
-draft: true
+draft: false
 ---
 
 Cursor 在 2026 年 8 月 3 日的更新里，为 Agent 提供了 Google Workspace 插件：可直接对接 Gmail、Google Drive、Google Calendar。

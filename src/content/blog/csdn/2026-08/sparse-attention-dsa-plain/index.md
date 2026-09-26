@@ -4,7 +4,7 @@ date: 2026-08-27
 description: 用白话说明稀疏注意力在优化什么：减轻全量两两关注的计算与内存压力；DSA 等具体名目是实现路线，先抓住「不必每个 token 看所有人」。
 tags: [AI, 注意力, 稀疏注意力, 长上下文]
 series: understanding-ai
-draft: true
+draft: false
 ---
 
 稀疏注意力（sparse attention）指：计算注意力时，不让每个位置都与序列里所有位置两两交互，只连接一部分位置。

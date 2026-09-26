@@ -4,7 +4,7 @@ date: 2026-08-11
 description: 专栏「浏览器里的图形」第三篇：纯原理说明位图放大变糊的原因——有限采样与插值；并对照矢量为何能放大仍清晰。
 tags: [前端, 位图, 矢量, 采样, 浏览器图形, 系列]
 series: browser-graphics
-draft: true
+draft: false
 ---
 
 位图（bitmap / raster）用网格上的颜色采样描述图像；矢量（vector）用几何描述描述图像。

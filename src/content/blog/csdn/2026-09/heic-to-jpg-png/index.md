@@ -1,4 +1,10 @@
-# iPhone 拍的 HEIC 怎么转 JPG/PNG？交作业、发钉钉不用再求人
+---
+title: iPhone 拍的 HEIC 怎么转 JPG/PNG？交作业、发钉钉不用再求人
+date: 2026-09-01
+description: 用浏览器把 iPhone 默认的 HEIC 转成 JPG 或 PNG：讲清兼容性差异、何时选哪种格式，以及本地解码、预览、下载的三步流程。
+tags: [图片格式, HEIC, JPG, PNG, 在线工具]
+draft: false
+---
 
 HEIC（High Efficiency Image Container）是 iPhone 近几年默认的拍照格式。同样一张图，它比 JPG 更小，画质往往还更好。
 

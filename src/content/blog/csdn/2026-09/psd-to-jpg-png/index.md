@@ -1,4 +1,10 @@
-# 不会用 Photoshop？PSD 直接转 JPG/PNG 给同事
+---
+title: 不会用 Photoshop？PSD 直接转 JPG/PNG 给同事
+date: 2026-09-15
+description: 没有 Photoshop 时，用浏览器把 PSD 渲染成扁平 JPG/PNG 给同事；同时说明图层与复杂效果的能力边界。
+tags: [PSD, Photoshop, JPG, PNG, 在线工具]
+draft: false
+---
 
 设计同事发来 `.psd`，你电脑没装 Photoshop，双击打不开。邮件里写「请导出 JPG」，对方忙起来又要等半天。
 

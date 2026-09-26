@@ -13,7 +13,7 @@ npm run preview   # 预览构建产物
 
 ## 如何新增一篇文章
 
-1. 先定第三方平台，在 `src/content/blog/{platform}/{YYYY-MM}/` 下新建 `文章-slug/index.md`（`platform` 为 `csdn` 或 `cnblogs`；`YYYY-MM` 与 frontmatter `date` 年月一致；配图放同目录 `images/`）。一文只放一个平台目录。
+1. 先定第三方分发渠道，在 `src/content/blog/{platform}/{YYYY-MM}/` 下新建 `文章-slug/index.md`（`platform` 为 `csdn` 或 `cnblogs`；`YYYY-MM` 与 frontmatter `date` 年月一致；配图放同目录 `images/`）。一文只放一个渠道目录。
 2. 填写 frontmatter：
 
 ```yaml
@@ -23,34 +23,37 @@ date: 2026-08-12
 updated:            # 可选，修订日期
 description: 一句话摘要，用于列表与 SEO
 tags: [AI, 基础概念]
-series:             # 可选：browser-graphics | agent-notes
-draft: true         # 囤稿默认 true；发布周改为 false
+series:             # 可选：browser-graphics | agent-notes | understanding-ai | ai-coding-workflow
+draft: false        # 本站上线用 false；未完成稿用 true
 ---
 ```
 
 3. 正文从 `##` 二级标题开始写（一级标题由页面模板根据 `title` 渲染）。
-4. 发布：当周稿改 `draft: false` 后 push `main`，GitHub Actions 自动构建；站点 URL 为 `/blog/{slug}/`（不含平台 / 月份路径）。`slug` 须跨平台唯一。
+4. 发布：改 `draft: false` 后 push `main`，GitHub Actions 自动构建。
+   - 本站文章 URL：`/blog/{slug}/`（不含渠道 / 月份路径）
+   - 按渠道浏览：`/blog/platform/`、`/blog/platform/csdn/`、`/blog/platform/cnblogs/`
+   - `slug` 须跨渠道唯一
 
 ## 目录结构
 
 ```
 src/
   content/blog/
-    csdn/{YYYY-MM}/{slug}/     # CSDN 母稿
-    cnblogs/{YYYY-MM}/{slug}/  # 博客园母稿
+    csdn/{YYYY-MM}/{slug}/     # CSDN 分发母稿（本站同步展示）
+    cnblogs/{YYYY-MM}/{slug}/  # 博客园分发母稿（本站同步展示）
   content.config.ts   # 内容集合与 frontmatter 校验
   layouts/            # 页面布局（含 BlogPosting JSON-LD）
-  pages/              # 路由：/、/blog/、/series/、/about/
+  pages/              # 路由：/、/blog/、/blog/platform/、/series/、/about/
   styles/global.css
-  consts.ts
-docs/plans/           # 选题、建站档案、周刊副线
+  consts.ts           # 站点常量、专栏与分发渠道元数据
+docs/plans/           # 选题、建站档案、运营计划（不进站点内容集合）
 .agents/skills/       # 写作 skill（ruanyifeng-tech-writing）
 public/robots.txt
 .github/workflows/deploy.yml
 AGENTS.md
 ```
 
-选题与分发纪律见 [docs/README.md](./docs/README.md)。新增文章只往对应平台目录写，不要写回其他仓库。
+选题与分发纪律见 [docs/README.md](./docs/README.md)。新增文章只往对应渠道目录写，不要写回其他仓库。
 
 ## 导出 CSDN 分发稿
 

@@ -4,7 +4,7 @@ date: 2026-08-09
 description: 把 Cursor 里最常用的三种介入方式拆开：Tab 补全、行内编辑、Agent，并说明各自适合什么改动、什么时候不该用。
 tags: [AI, 编辑器, Cursor, 效率]
 series: ai-coding-workflow
-draft: true
+draft: false
 ---
 
 Cursor 是一款把代码补全、局部改写和代理式改仓库能力放在同一编辑器里的产品。

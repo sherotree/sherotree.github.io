@@ -3,7 +3,7 @@ title: TypeScript：unknown 和 any 差在哪
 date: 2026-08-17
 description: 对比 TypeScript 的 unknown 与 any：any 关闭检查，unknown 强制先收窄再使用；并给出 JSON 解析等常见写法。
 tags: [TypeScript, 类型, unknown, any]
-draft: true
+draft: false
 ---
 
 `any` 与 `unknown` 都表示「现在还不知道具体类型」，但对类型检查器的态度完全不同。

@@ -3,7 +3,7 @@ title: 当周快评：DeepSeek 涨价，你换了吗
 date: 2026-08-13
 description: 梳理 DeepSeek 2026 年 8 月 API 涨价预告前后时间线，并给出开发者判断「换不换模型」的三个检查项：缓存、时段、任务可迁移性。
 tags: [AI, 热点, DeepSeek, API定价]
-draft: false
+draft: true
 ---
 
 2026 年 8 月 6 日，DeepSeek 在开放平台发公告：计划近期**整体上调** API 定价，并写明「预计涨幅较大」，具体方案以正式通知为准。

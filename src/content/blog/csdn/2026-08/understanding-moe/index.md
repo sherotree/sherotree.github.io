@@ -4,7 +4,7 @@ date: 2026-08-07
 description: 用白话说明 Mixture of Experts：总参数可以很大，但每次推理只激活少数专家，所以算力与显存压力不等于「全员同时上场」。
 tags: [AI, 基础概念, MoE, 稀疏计算]
 series: understanding-ai
-draft: false
+draft: true
 ---
 
 MoE（Mixture of Experts，混合专家）是一种把模型拆成多组「专家」网络、再由路由器（router）决定每次叫醒谁的结构。

@@ -4,7 +4,7 @@ date: 2026-08-05
 description: 用白话说明上下文窗口与 token：它们限制的是一次请求里模型能「同时看见」多少内容，以及输入、历史与输出如何抢同一块预算。
 tags: [AI, 基础概念, 上下文窗口, token]
 series: understanding-ai
-draft: false
+draft: true
 ---
 
 上下文窗口（context window）是大模型一次推理时，能同时装进「输入侧」的内容上限。

@@ -7,13 +7,13 @@
 
 ## 一、目标与定位
 
-| 项 | 决定 |
-|----|------|
-| 定位 | **对外主站**：母稿权威归档；六站分发后逐步导流回来 |
-| 语言 / 文风 | 中文；`ruanyifeng-tech-writing` |
-| 形态 | 极简个人站：首页目录 + 网络日志，非产品 landing |
-| 代码 | 独立公开仓库，开源 |
-| 部署 | GitHub Pages → `https://{username}.github.io` |
+| 项                | 决定                                                            |
+| ----------------- | --------------------------------------------------------------- |
+| 定位              | **对外主站**：母稿权威归档；六站分发后逐步导流回来              |
+| 语言 / 文风       | 中文；`ruanyifeng-tech-writing`                                 |
+| 形态              | 极简个人站：首页目录 + 网络日志，非产品 landing                 |
+| 代码              | 独立公开仓库，开源                                              |
+| 部署              | GitHub Pages → `https://{username}.github.io`                   |
 | 与 `one` monorepo | **已脱钩**：选题、母稿、写作 skill 均在本仓库；产品站仍在 `one` |
 
 **为何不用本 monorepo + Vercel：** 个人技术博客与产品工具站品牌隔离；纯 Markdown 静态页不需要 SSR；`username.github.io` 是开源个人站的经典形态。
@@ -30,12 +30,12 @@
 
 ## 三、技术选型（已定）
 
-| 项 | 选择 | 原因 |
-|----|------|------|
-| 框架 | Astro + Content Collections + Markdown | 静态导出一流，写稿接近纯 Markdown |
-| 部署 | GitHub Actions → GitHub Pages（官方 `actions/deploy-pages`） | push `main` 即发 |
-| 样式 | 极简排版：可读行宽、高对比正文、少装饰 | 贴近阮式「目录站」 |
-| 包管理 | bun 或 npm 均可 | 独立仓库，不跟 `one` 强制一致 |
+| 项     | 选择                                                         | 原因                              |
+| ------ | ------------------------------------------------------------ | --------------------------------- |
+| 框架   | Astro + Content Collections + Markdown                       | 静态导出一流，写稿接近纯 Markdown |
+| 部署   | GitHub Actions → GitHub Pages（官方 `actions/deploy-pages`） | push `main` 即发                  |
+| 样式   | 极简排版：可读行宽、高对比正文、少装饰                       | 贴近阮式「目录站」                |
+| 包管理 | bun 或 npm 均可                                              | 独立仓库，不跟 `one` 强制一致     |
 
 不选 Next.js static export：对纯博客过重，Pages 上也无 ISR/SSR 收益。
 
@@ -43,16 +43,16 @@
 
 ## 四、信息架构
 
-| 路由 | 用途 |
-|------|------|
-| `/` | 站名 + 一句话定位 + 入口（网络日志 / 系列 / 关于 / GitHub） |
-| `/blog/` | 文章列表，按日期倒序；可选按月归档 |
-| `/blog/{slug}/` | 单篇正文 |
-| `/series/browser-graphics/` | 专栏「浏览器里的图形」 |
-| `/series/agent-notes/` | 专栏「Agent 工程笔记」 |
-| `/about/` | 关于与联系 |
-| `/sitemap.xml`、`/robots.txt` | SEO |
-| 每篇页内 | `BlogPosting` JSON-LD（中文 headline / description） |
+| 路由                          | 用途                                                        |
+| ----------------------------- | ----------------------------------------------------------- |
+| `/`                           | 站名 + 一句话定位 + 入口（网络日志 / 系列 / 关于 / GitHub） |
+| `/blog/`                      | 文章列表，按日期倒序；可选按月归档                          |
+| `/blog/{slug}/`               | 单篇正文                                                    |
+| `/series/browser-graphics/`   | 专栏「浏览器里的图形」                                      |
+| `/series/agent-notes/`        | 专栏「Agent 工程笔记」                                      |
+| `/about/`                     | 关于与联系                                                  |
+| `/sitemap.xml`、`/robots.txt` | SEO                                                         |
+| 每篇页内                      | `BlogPosting` JSON-LD（中文 headline / description）        |
 
 ### Frontmatter 约定
 
@@ -64,7 +64,7 @@ updated: # 可选
 description: 一句话摘要，用于列表与 SEO
 tags: [AI, 基础概念]
 series: # 可选：browser-graphics | agent-notes
-draft: false
+draft: true
 ---
 ```
 
@@ -105,11 +105,11 @@ Markdown 母稿（本博客仓库）
                     └─► 后期文末挂「完整版 / 归档」链回本站
 ```
 
-1. 在博客仓库写/改 Markdown → 合并 `main` → Pages 上线。  
-2. 同一母稿改编发六站（标题/标签按平台改；公众号删减版）。  
-3. **导流节奏**（与「永久零软广」的衔接）：  
-   - **第 1～6 周**：平台稿可不挂自有站链接，先养平台权重。  
-   - **第 7 周起**：文末加一行「完整版 / 归档：https://{username}.github.io/blog/{slug}/」或系列索引。  
+1. 在博客仓库写/改 Markdown → 合并 `main` → Pages 上线。
+2. 同一母稿改编发六站（标题/标签按平台改；公众号删减版）。
+3. **导流节奏**（与「永久零软广」的衔接）：
+   - **第 1～6 周**：平台稿可不挂自有站链接，先养平台权重。
+   - **第 7 周起**：文末加一行「完整版 / 归档：https://{username}.github.io/blog/{slug}/」或系列索引。
 4. 执行本计划时，同步改 [content-plan-3months.md](./content-plan-3months.md)：写明主站 URL，并把硬约束从「永久不导流」改为上述分阶段导流。
 
 ---
@@ -152,21 +152,21 @@ Markdown 母稿（本博客仓库）
 
 ## 八、首期明确不做
 
-- 评论、站内搜索、账号体系  
-- CMS / Sanity（母稿即 Git 内 Markdown）  
-- 放进 `one/apps` 或 Vercel（日后若换自定义域名再评估）  
+- 评论、站内搜索、账号体系
+- CMS / Sanity（母稿即 Git 内 Markdown）
+- 放进 `one/apps` 或 Vercel（日后若换自定义域名再评估）
 - 自定义域名（可后挂，不阻塞 `*.github.io` 上线）
 
 ---
 
 ## 九、验收标准
 
-| 项 | 标准 |
-|----|------|
-| 可访问 | `https://{username}.github.io` 首页与样例文可打开 |
-| 开源 | 仓库公开，README 可复现本地开发 |
-| 结构 | 路由与系列页齐全，frontmatter 可支撑后续 36 篇 |
-| SEO 底线 | sitemap、robots、文章 JSON-LD 存在 |
+| 项       | 标准                                                   |
+| -------- | ------------------------------------------------------ |
+| 可访问   | `https://{username}.github.io` 首页与样例文可打开      |
+| 开源     | 仓库公开，README 可复现本地开发                        |
+| 结构     | 路由与系列页齐全，frontmatter 可支撑后续 36 篇         |
+| SEO 底线 | sitemap、robots、文章 JSON-LD 存在                     |
 | 纪律对齐 | 内容计划已写明主站与导流节奏，不再与「永久零软广」冲突 |
 
 ---

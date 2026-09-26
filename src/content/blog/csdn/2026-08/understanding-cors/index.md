@@ -3,7 +3,7 @@ title: 理解 CORS：浏览器为什么拦你
 date: 2026-08-07
 description: 用白话说明跨源资源共享（CORS）：浏览器何时拦请求、预检是什么、以及前后端分别该改哪里。
 tags: [前端, HTTP, CORS, 浏览器]
-draft: false
+draft: true
 ---
 
 CORS（Cross-Origin Resource Sharing，跨源资源共享）是浏览器的一套规则：页面所在源与接口所在源不同时，是否允许前端脚本读取这次响应。

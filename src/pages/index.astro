@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { SERIES, PLATFORMS, PLATFORM_IDS, GITHUB_URL, formatDate } from '../consts';
+import { SERIES, GITHUB_URL, formatDate } from '../consts';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -39,18 +39,6 @@ const recentPosts = posts.slice(0, 8);
       <a href="/blog/">网络日志</a>
       <span class="desc">全部文章，按日期排列</span>
     </li>
-    <li>
-      <a href="/blog/platform/">分发渠道</a>
-      <span class="desc">按第三方平台母稿分类浏览</span>
-    </li>
-    {
-      PLATFORM_IDS.map((id) => (
-        <li>
-          <a href={`/blog/platform/${id}/`}>渠道：{PLATFORMS[id].title}</a>
-          <span class="desc">{PLATFORMS[id].description}</span>
-        </li>
-      ))
-    }
     {
       Object.entries(SERIES).map(([slug, meta]) => (
         <li>

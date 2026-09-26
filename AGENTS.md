@@ -15,7 +15,7 @@
 1. **母稿按分发渠道归档**：`src/content/blog/{platform}/{YYYY-MM}/{slug}/index.md`（配图放同目录 `images/`；`YYYY-MM` 取 `date` 的年月）。
    - 当前渠道：`csdn`、`cnblogs`（后续可加，如 `zhihu`）。
    - **一文只归属一个第三方渠道**；目录即归属，不要同一篇复制到多个渠道目录。
-   - 本站统一展示：路由 `/blog/{slug}/`（与渠道 / 月份目录无关）；按渠道浏览：`/blog/platform/{platform}/`。
+   - 本站统一展示：路由 `/blog/{slug}/`（与渠道 / 月份目录无关）。渠道只用于仓库归档，不要在站点页面、列表或文章 meta 里对读者展示。
    - `slug` 须跨渠道唯一。
 2. 新增文章填 frontmatter（`title` / `date` / `description` / `tags` / 可选 `series` / `draft`）；正文从 `##` 起写，不要再写与 `title` 重复的一级标题。
 3. **发布闸门**：未完成或暂不上线的稿用 `draft: true`（不进站点列表与详情）。本站公开的稿设 `draft: false`，并同步到该篇所属第三方渠道。计划稿、运营笔记不要放进 `{slug}/index.md`，放到 `docs/plans/`。

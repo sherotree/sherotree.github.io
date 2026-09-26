@@ -1,19 +1,18 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
-import { PLATFORM_IDS } from './consts';
 
-/** 与 `src/content/blog/{platform}/` 及 consts.PLATFORMS 保持一致 */
-export const PLATFORMS = PLATFORM_IDS;
+/** 第三方分发渠道目录名；一文只归属一个渠道，由路径决定，不在站点对读者展示 */
+export const PLATFORMS = ['csdn', 'cnblogs'] as const;
 export type Platform = (typeof PLATFORMS)[number];
 
 const blog = defineCollection({
   loader: glob({
     base: './src/content/blog',
-    // 仅收录标准母稿；平台目录下的计划稿等扁文件不进站点
+    // 仅收录标准母稿；渠道目录下的计划稿等扁文件不进站点
     pattern: '**/index.md',
     // 路径：`{platform}/{YYYY-MM}/{slug}/index.md`
-    // id 始终取末段 slug，路由 /blog/{slug}/；slug 须跨平台唯一
+    // id 始终取末段 slug，路由 /blog/{slug}/；slug 须跨渠道唯一
     generateId: ({ entry }) => {
       const withoutExt = entry.replace(/\/index\.md$/, '');
       const segments = withoutExt.split('/');

@@ -30,8 +30,7 @@ draft: false        # 本站上线用 false；未完成稿用 true
 
 3. 正文从 `##` 二级标题开始写（一级标题由页面模板根据 `title` 渲染）。
 4. 发布：改 `draft: false` 后 push `main`，GitHub Actions 自动构建。
-   - 本站文章 URL：`/blog/{slug}/`（不含渠道 / 月份路径）
-   - 按渠道浏览：`/blog/platform/`、`/blog/platform/csdn/`、`/blog/platform/cnblogs/`
+   - 本站文章 URL：`/blog/{slug}/`（不含渠道 / 月份路径；渠道目录只用于仓库归档，不对读者展示）
    - `slug` 须跨渠道唯一
 
 ## 目录结构
@@ -43,9 +42,9 @@ src/
     cnblogs/{YYYY-MM}/{slug}/  # 博客园分发母稿（本站同步展示）
   content.config.ts   # 内容集合与 frontmatter 校验
   layouts/            # 页面布局（含 BlogPosting JSON-LD）
-  pages/              # 路由：/、/blog/、/blog/platform/、/series/、/about/
+  pages/              # 路由：/、/blog/、/series/、/about/
   styles/global.css
-  consts.ts           # 站点常量、专栏与分发渠道元数据
+  consts.ts           # 站点常量与专栏元数据
 docs/plans/           # 选题、建站档案、运营计划（不进站点内容集合）
 .agents/skills/       # 写作 skill（ruanyifeng-tech-writing）
 public/robots.txt

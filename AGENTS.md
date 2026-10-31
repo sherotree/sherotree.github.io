@@ -17,7 +17,7 @@
    - **一文只归属一个第三方渠道**；目录即归属，不要同一篇复制到多个渠道目录。
    - 本站统一展示：路由 `/blog/{slug}/`（与渠道 / 月份目录无关）。渠道只用于仓库归档，不要在站点页面、列表或文章 meta 里对读者展示。
    - `slug` 须跨渠道唯一。
-   - **微信公众号短文**不走 `src/content/blog/`，母稿在仓库根目录 `wechat/`；上传草稿用 `.agents/skills/wechat-draft/SKILL.md`。
+   - **微信公众号短文**不走 `src/content/blog/`，母稿在仓库根目录 `wechat/`：`pending/` 未上传、`uploaded/` 已上传；上传草稿用 `.agents/skills/wechat-draft/SKILL.md`。
 2. 新增文章填 frontmatter（`title` / `date` / `description` / `tags` / 可选 `series` / `draft`）；正文从 `##` 起写，不要再写与 `title` 重复的一级标题。
 3. **正文只写给读者**。每一句都要帮读者理解、判断或动手。删掉对读者没有意义的话，也不要写出 AI 味。
    - 不写作者自评、写作动机、立场旁白（如「这个判断带偏见」「我这样写是因为」「对写简历的人可能不友好」）。判断要落成读者能用的结论。

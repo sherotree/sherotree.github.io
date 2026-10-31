@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Upload repo wechat/*.md articles to the Official Account draft box.
+"""Upload repo wechat/pending/*.md articles to the Official Account draft box.
 
 Reads WECHAT_APP_ID / WECHAT_APP_SECRET from process env, then .env.local / .env.
 Saves drafts only. Does not publish or mass-send.
+On success, moves the md + cover into wechat/uploaded/.
 """
 
 from __future__ import annotations
@@ -24,6 +25,7 @@ DRAFT_URL = "https://api.weixin.qq.com/cgi-bin/draft/add"
 
 TITLE_LIMIT = 32
 DIGEST_LIMIT = 120
+DEFAULT_AUTHOR = "小树"
 
 CODE_RE = re.compile(r"`([^`]+)`")
 MD_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
@@ -225,11 +227,32 @@ def save_state(path: Path, state: dict) -> None:
     path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def list_articles(wechat_dir: Path) -> list[Path]:
-    return sorted(wechat_dir.glob("*.md"))
+def list_articles(pending_dir: Path) -> list[Path]:
+    return sorted(pending_dir.glob("*.md"))
 
 
-def create_draft(token: str, title: str, body: str, thumb_media_id: str) -> str:
+def move_to_uploaded(path: Path, uploaded_dir: Path) -> Path:
+    uploaded_dir.mkdir(parents=True, exist_ok=True)
+    dest = uploaded_dir / path.name
+    if dest.exists():
+        raise RuntimeError(f"已上传目录已有同名文件：{dest.name}")
+    cover_src = path.with_suffix(".jpg")
+    path.rename(dest)
+    if cover_src.exists():
+        cover_dest = uploaded_dir / cover_src.name
+        if cover_dest.exists():
+            raise RuntimeError(f"已上传目录已有同名封面：{cover_dest.name}")
+        cover_src.rename(cover_dest)
+    return dest
+
+
+def create_draft(
+    token: str,
+    title: str,
+    body: str,
+    thumb_media_id: str,
+    author: str = DEFAULT_AUTHOR,
+) -> str:
     payload = api_json(
         DRAFT_URL,
         {
@@ -237,6 +260,7 @@ def create_draft(token: str, title: str, body: str, thumb_media_id: str) -> str:
                 {
                     "article_type": "news",
                     "title": title,
+                    "author": author,
                     "digest": digest_from(body),
                     "content": to_html(body),
                     "thumb_media_id": thumb_media_id,
@@ -257,15 +281,17 @@ def main() -> int:
     dry_run = "--dry-run" in sys.argv
     root = find_repo_root(Path.cwd())
     wechat_dir = root / "wechat"
+    pending_dir = wechat_dir / "pending"
+    uploaded_dir = wechat_dir / "uploaded"
     state_path = wechat_dir / "drafts.json"
-    if not wechat_dir.is_dir():
-        raise RuntimeError(f"找不到内容目录：{wechat_dir}")
+    if not pending_dir.is_dir():
+        raise RuntimeError(f"找不到待上传目录：{pending_dir}")
 
     state = load_state(state_path)
-    done = {item["file"] for item in state.get("articles", [])}
-    pending = [path for path in list_articles(wechat_dir) if path.name not in done]
+    done = {Path(item["file"]).name for item in state.get("articles", [])}
+    pending = [path for path in list_articles(pending_dir) if path.name not in done]
     if not pending:
-        print("没有待上传的文章")
+        print("没有待上传的文章（wechat/pending/ 为空，或均已在 drafts.json）")
         return 0
 
     for path in pending:
@@ -273,8 +299,9 @@ def main() -> int:
         cover = path.with_suffix(".jpg")
         if not cover.exists():
             raise RuntimeError(f"缺少封面：{cover.name}")
-        print(f"{path.name}")
+        print(f"pending/{path.name}")
         print(f"  标题 {len(title)} 字：{title}")
+        print(f"  作者：{DEFAULT_AUTHOR}")
         print(f"  正文 {len(to_html(body))} 字符，封面 {cover.stat().st_size} 字节")
         if dry_run:
             print(to_html(body))
@@ -293,9 +320,10 @@ def main() -> int:
         cover = path.with_suffix(".jpg")
         thumb_media_id = upload_cover(token, cover)
         draft_media_id = create_draft(token, title, body, thumb_media_id)
+        dest = move_to_uploaded(path, uploaded_dir)
         state.setdefault("articles", []).append(
             {
-                "file": path.name,
+                "file": f"uploaded/{dest.name}",
                 "title": title,
                 "draft_media_id": draft_media_id,
                 "thumb_media_id": thumb_media_id,
@@ -303,7 +331,7 @@ def main() -> int:
             }
         )
         save_state(state_path, state)
-        print(f"  已存入草稿 {draft_media_id}")
+        print(f"  已存入草稿 {draft_media_id} → uploaded/{dest.name}")
     return 0
 
 
